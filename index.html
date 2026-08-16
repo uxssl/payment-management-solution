@@ -1,0 +1,1658 @@
+<!doctype html>
+<!-- Education Payments — School Fee Collection & Digital Payments (built on the Pintex template by Jthemes, https://www.jthemes.com) -->
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+
+
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="author" content="SSLWIRELESS">
+		<meta name="description" content="Education Payments — fee collection, digital payments and financial visibility for schools, colleges and madrasahs. Powered by the PCI-DSS certified SSLCOMMERZ gateway.">
+		<meta name="keywords" content="school fee collection, education payments, digital payments Bangladesh, SSLCOMMERZ, fee management, student payments">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- SITE TITLE -->
+		<title>Education Payments — Simplify Every School Payment</title>
+
+		<!-- FAVICON AND TOUCH ICONS -->
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+		<link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="icon" href="images/apple-touch-icon.png" type="image/x-icon">
+
+		<!-- GOOGLE FONTS -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+		<!-- BOOTSTRAP CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- FONT ICONS -->
+		<link href="css/flaticon.css" rel="stylesheet">
+
+		<!-- PLUGINS STYLESHEET -->
+		<link href="css/menu.css" rel="stylesheet">
+		<link id="effect" href="css/dropdown-effects/fade-down.css" media="all" rel="stylesheet">
+		<link href="css/magnific-popup.css" rel="stylesheet">
+		<link href="css/owl.carousel.min.css" rel="stylesheet">
+		<link href="css/owl.theme.default.min.css" rel="stylesheet">
+		<link href="css/lunar.css" rel="stylesheet">
+
+		<!-- ON SCROLL ANIMATION -->
+		<link href="css/animate.css" rel="stylesheet">
+
+		<!-- TEMPLATE CSS -->
+		<link href="css/purple-theme.css" rel="stylesheet">
+
+		<!-- Style Switcher CSS -->
+		<link href="css/blue-theme.css" rel="alternate stylesheet" title="blue-theme">
+		<link href="css/indigo-theme.css" rel="alternate stylesheet" title="indigo-theme">
+		<link href="css/orchid-theme.css" rel="alternate stylesheet" title="orchid-theme">
+		<link href="css/pink-theme.css" rel="alternate stylesheet" title="pink-theme">
+		<link href="css/skyblue-theme.css" rel="alternate stylesheet" title="skyblue-theme">
+		<link href="css/violet-red-theme.css" rel="alternate stylesheet" title="violet-red-theme">
+
+		<!-- RESPONSIVE CSS -->
+		<link href="css/responsive.css" rel="stylesheet">
+
+		<!-- WARM EDUCATION PALETTE OVERRIDE ==========================================
+		     Single point of control: the whole template accent is driven by these two
+		     CSS variables. Azure = brand (payments), amber = warmth (school). Kept last
+		     in <head> so it wins over any theme stylesheet the style-switcher enables. -->
+		<style>
+			:root {
+				--theme-color: #0099f2;           /* azure — primary brand */
+				--theme-color-secondary: #f59e0b;  /* amber — warm, school / stationery */
+			}
+			/* soft warm tint for section-id eyebrow labels */
+			.section-id { color: var(--theme-color); }
+			/* placeholder markers kept visually honest, not hidden */
+			.pending-figure { color: var(--theme-color-secondary); font-weight: 600; }
+			.placeholder-note { display:inline-block; font-size:.72rem; letter-spacing:.02em; text-transform:uppercase;
+				color: var(--theme-color-secondary); border:1px dashed var(--theme-color-secondary);
+				border-radius:6px; padding:2px 8px; margin-top:8px; }
+
+			/* Stats band — designed placeholder while verified figures are pending */
+			.stat-card { height:100%; text-align:center; padding:38px 24px; border-radius:16px;
+				background:#f7f9fc; border:1px solid #eef1f7; transition:transform .25s ease, box-shadow .25s ease; }
+			.stat-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(16,26,47,.28); }
+			.stat-ico { width:60px; height:60px; margin:0 auto 22px; border-radius:50%;
+				display:flex; align-items:center; justify-content:center; font-size:24px;
+				color:var(--theme-color); background:rgba(0,153,242,.10); }
+			.stat-skeleton { width:72px; height:16px; margin:0 auto 16px; border-radius:8px;
+				background:linear-gradient(90deg,#e7ecf3 0%,#f2f5fa 50%,#e7ecf3 100%);
+				background-size:200% 100%; animation:statShimmer 1.6s ease-in-out infinite; }
+			@keyframes statShimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+			@media (prefers-reduced-motion: reduce){ .stat-skeleton{ animation:none } }
+			.stat-label { margin:0; font-weight:600; font-size:1.05rem; color:#353f4f; }
+			.stat-pending { display:block; margin-top:8px; font-size:.68rem; letter-spacing:.06em;
+				text-transform:uppercase; color:#9aa1b1; }
+
+			/* Use Cases cards — built on the theme's tinted-card + blob-icon language */
+			.uc-card { position:relative; height:100%; display:flex; flex-direction:column;
+				padding:34px 30px 0; background:#fff; border:1px solid #e9eef6; border-radius:20px;
+				box-shadow:0 12px 30px -22px rgba(16,26,47,.30); overflow:hidden;
+				transition:transform .3s var(--ease,ease), box-shadow .3s var(--ease,ease), border-color .3s var(--ease,ease); }
+			.uc-card::before { content:""; position:absolute; top:0; left:0; right:0; height:3px;
+				background:linear-gradient(90deg,#0099f2,#39b7cb); opacity:0; transition:opacity .3s var(--ease,ease); }
+			.uc-card:hover { transform:translateY(-8px); border-color:rgba(0,153,242,.35);
+				box-shadow:0 30px 54px -26px rgba(0,153,242,.45); }
+			.uc-card:hover::before { opacity:1; }
+			.uc-head { display:flex; align-items:flex-start; gap:15px; margin-bottom:24px; }
+			.uc-head .fbox-ico { flex-shrink:0; margin:0; }
+			.uc-head h5 { margin:0; font-size:1.08rem; line-height:1.38; text-wrap:balance;
+				min-height:2.76em; display:flex; align-items:center; }
+			.uc-body { flex:1 1 auto; }
+			.uc-row + .uc-row { margin-top:18px; }
+			.uc-row p { margin:0; font-size:.92rem; line-height:1.62; color:#6a7382; }
+			.uc-label { display:block; font-size:.66rem; font-weight:700; letter-spacing:.1em;
+				text-transform:uppercase; margin-bottom:5px; }
+			.uc-label.is-problem { color:#9aa4b4; }
+			.uc-label.is-help { color:var(--theme-color); }
+			.uc-outcome { display:flex; align-items:flex-start; gap:11px; margin:26px -30px 0;
+				padding:18px 30px; background:linear-gradient(180deg,#f7fbff,#f2f8fe);
+				border-top:1px solid #e9eef6; }
+			.uc-outcome .flaticon-check { color:var(--theme-color-secondary); font-size:14px; margin-top:3px; flex-shrink:0; }
+			.uc-outcome p { margin:0; font-weight:600; font-size:.9rem; line-height:1.55; color:#353f4f; }
+
+			/* How It Works — theme-matched step flow: real blob icons (same
+			   fbox-ico/shape-ico pattern as Features/Use Cases/Technology),
+			   a small step-order tag, and a clean connector between them. */
+			#how-it-works { background:linear-gradient(180deg,#f5faff 0%,#fbfdff 42%,#fff 100%); }
+			.hiw-flow { position:relative; }
+			.hiw-flow > [class*="col"] { display:flex; }
+			.hiw-step { position:relative; z-index:1; display:flex; width:100%; }
+			.hiw-card { position:relative; width:100%; padding:36px 22px 30px; text-align:center;
+				display:flex; flex-direction:column; align-items:center;
+				background:#fff; border:1px solid #e9eef6; border-radius:20px;
+				box-shadow:0 12px 30px -22px rgba(16,26,47,.30);
+				transition:transform .3s var(--ease,ease), box-shadow .3s var(--ease,ease), border-color .3s var(--ease,ease); }
+			.hiw-card::before { content:""; position:absolute; top:0; left:18%; right:18%; height:3px;
+				border-radius:0 0 3px 3px; background:linear-gradient(90deg,#0099f2,#39b7cb);
+				opacity:0; transition:opacity .3s var(--ease,ease); }
+			.hiw-card:hover { transform:translateY(-8px); border-color:rgba(0,153,242,.35);
+				box-shadow:0 30px 54px -26px rgba(0,153,242,.45); }
+			.hiw-card:hover::before { opacity:1; }
+			.hiw-card .fbox-ico { position:relative; margin-bottom:20px; }
+			.hiw-tag { position:absolute; top:14px; right:14px; width:26px; height:26px; border-radius:50%;
+				display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:700;
+				color:var(--theme-color); background:rgba(0,153,242,.10); }
+			.hiw-step-label { display:block; font-size:.62rem; font-weight:700; letter-spacing:.15em;
+				text-transform:uppercase; color:var(--theme-color-secondary); margin-bottom:8px; }
+			.hiw-card h6 { margin-bottom:10px; font-size:1.02rem; line-height:1.35; text-wrap:balance; min-height:2.7em;
+				display:flex; align-items:center; }
+			.hiw-card p { font-size:.9rem; line-height:1.62; margin:0; color:#6a7382; }
+			@media (min-width:992px){
+				.hiw-flow::before { content:""; position:absolute; top:66px; left:11%; right:11%; height:2px; z-index:0;
+					background:linear-gradient(90deg, rgba(0,153,242,.05), rgba(0,153,242,.4) 8%, rgba(0,153,242,.4) 92%, rgba(0,153,242,.05)); }
+				.hiw-card { padding-top:40px; }
+			}
+
+			/* Technology & Security */
+			.tech-panel { background:linear-gradient(160deg,#f3f9ff 0%,#fbfdff 60%,#fff 100%);
+				border:1px solid #eef3fa; border-radius:28px; padding:64px 28px; }
+			/* Complete Solution band — theme only ships purple/indigo tints, so use an azure one */
+			.cs-wrapper { background:linear-gradient(160deg,#eaf5fe 0%,#f2f9ff 60%,#f7fbff 100%); padding:70px 30px; }
+			/* equal-height cards: stretch the row and let text push to a shared baseline */
+			.cs-wrapper .row.d-flex { align-items:stretch!important; }
+			.cs-wrapper .row > [class*="col"] { display:flex; }
+			.cs-wrapper .fbox-5 { width:100%; display:flex; flex-direction:column; }
+			.cs-wrapper .fbox-5 .fbox-txt { margin-top:auto; }
+			.cs-wrapper .fbox-5 .fbox-txt h5 { text-wrap:balance; }
+
+			/* Key features ("Everything in One Place") — tinted band, roomier grid */
+			#key-features { background:linear-gradient(180deg,#fff 0%,#f5faff 18%,#f5faff 82%,#fff 100%); }
+			#key-features .section-title { margin-bottom:70px!important; }
+			.kf-grid { --kf-gap:48px; row-gap:var(--kf-gap); column-gap:0; }
+			.kf-grid > [class*="col"] { padding-left:20px; padding-right:20px; }
+			.kf-grid .fbox-2 { padding-right:16px; }
+			.kf-grid .fbox-txt h5 { margin-bottom:9px; }
+			.kf-grid .fbox-txt > p { margin-bottom:0; }
+			@media (min-width:992px){ .kf-grid { --kf-gap:60px; } .kf-grid > [class*="col"] { padding-left:28px; padding-right:28px; } }
+
+			/* 7 stack layers in a single row on desktop; wraps down on smaller screens */
+			.tech-grid { display:grid; gap:16px; grid-template-columns:repeat(2,1fr); }
+			.tech-grid > .col { display:flex; width:100%; max-width:none; padding:0; }
+			@media (min-width:768px){ .tech-grid { grid-template-columns:repeat(4,1fr); } }
+			@media (min-width:1200px){
+				.tech-grid { grid-template-columns:repeat(7,1fr); gap:12px; }
+				.tech-grid .tech-card { padding:26px 10px; }
+				.tech-grid .tech-name { font-size:.84rem; line-height:1.45; }
+				.tech-grid .tech-layer { font-size:.6rem; letter-spacing:.07em; }
+				.tech-grid .tech-logo-wrap { height:44px; margin-bottom:14px; }
+				.tech-grid .tech-logo-wrap img { max-width:88px; }
+			}
+			.tech-card { height:100%; width:100%; text-align:center; padding:30px 16px; background:#fff; border:1px solid #eef1f7;
+				border-radius:16px; box-shadow:0 10px 26px -20px rgba(16,26,47,.28);
+				transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+			.tech-card:hover { transform:translateY(-6px); border-color:rgba(0,153,242,.3);
+				box-shadow:0 22px 40px -22px rgba(0,153,242,.35); }
+			.tech-card .fbox-ico { margin:0 auto 16px; }
+			.tech-logo-wrap { height:52px; margin:0 auto 18px; display:flex; align-items:center; justify-content:center; }
+			.tech-logo-wrap img { max-height:100%; max-width:120px; width:auto; object-fit:contain; }
+
+			/* Brand / payment-method logo carousel — uniform visual height regardless of source aspect ratio */
+			.brand-logo { display:flex!important; align-items:center; justify-content:center; height:88px; }
+			.brand-logo a { display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
+			.brand-logo img { height:56px; width:auto; max-width:150px; object-fit:contain; }
+			.tech-layer { display:block; font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+				color:var(--theme-color-secondary); margin-bottom:6px; }
+			.tech-name { margin:0; font-weight:600; color:#353f4f; font-size:.95rem; }
+			.tech-security-line { display:flex; align-items:center; justify-content:center; gap:10px;
+				margin-top:48px; padding-top:32px; border-top:1px solid rgba(16,26,47,.08); text-align:center; }
+			.tech-security-line .flaticon-shield { font-size:20px; }
+			.tech-security-line p { margin:0; font-weight:600; color:#4a5568; }
+
+			/* Closing CTA banner background */
+			.footer-cta-bg { background-image:url(images/footer-banner.png); background-size:cover; background-position:center; }
+
+			/* Hero wash — theme ships this as a pale purple gradient (#e9e0f2);
+			   swap it for the same soft weight in our azure primary instead. */
+			#hero-11 { background-image: linear-gradient(180deg, rgba(216,238,253,.8) 50%, rgba(216,238,253,.05) 100%); }
+
+			/* Header used a 1140px wrapper while the page body uses Bootstrap's 1320px
+			   container, so the logo sat ~90px inside the content edge. Match them. */
+			@media (min-width:1200px){
+				.wsmainwp { max-width:1320px!important;
+					padding-left:calc(var(--bs-gutter-x,1.5rem) * .5)!important;
+					padding-right:calc(var(--bs-gutter-x,1.5rem) * .5)!important; }
+			}
+
+			/* Theme ships hr.divider with margin:0 — give it breathing room */
+			hr.divider { margin-top:64px; }
+
+			/* Dial the theme's blob icons down across the page (blobs scaled to match) */
+			.ico-50 [class*="flaticon-"]:before,
+			.ico-50 [class*="flaticon-"]:after { font-size:2rem; }
+			.ico-55 [class*="flaticon-"]:before,
+			.ico-55 [class*="flaticon-"]:after { font-size:2.1rem; }
+			.ico-60 [class*="flaticon-"]:before,
+			.ico-60 [class*="flaticon-"]:after { font-size:2.25rem; }
+			.ico-55 .shape-ico svg { width:78px; height:78px; top:-26px; left:calc(50% - 41px); }
+			.ico-60 .shape-ico svg { width:84px; height:84px; top:-29px; left:calc(50% - 45px); }
+			.fbox-ico-wrap { margin-right:20px!important; }
+
+			/* Fix theme's float-based footer-copyright-logo — it assumes one short
+			   inline line of text; ours wraps to two paragraphs, so lay it out as a
+			   proper flex row instead of relying on float+inline-block. */
+			.footer-copyright-fix { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+			.footer-copyright-fix .footer-copyright-logo { float:none; top:0; display:flex; }
+			.footer-copyright-fix .footer-copyright-text p.p-sm { display:block; margin:0; line-height:1.5; }
+			.footer-copyright-fix .footer-copyright-text p.p-sm + p.p-sm { margin-top:2px; }
+		</style>
+
+	</head>
+
+
+
+	<body>
+
+
+
+		<!-- PRELOADER SPINNER
+		============================================= -->
+		<div id="loading">
+			<div id="loader" class="loading--theme">
+				<div class="cssload-spinner"></div>
+			</div>
+		</div>
+
+
+
+		<!-- PAGE CONTENT
+		============================================= -->
+		<div id="page" class="page">
+
+
+
+			<!-- HEADER
+			============================================= -->
+			<header id="header" class="tra-menu navbar-dark white-scroll">
+				<div class="header-wrapper">
+
+
+					<!-- MOBILE HEADER -->
+				    <div class="wsmobileheader clearfix">
+				    	<span class="smllogo">
+				    		<a href="#hero-11">
+					    		<img class="lt-img" src="images/logo.png" alt="Education Payments">
+					    		<img class="dt-img" src="images/logo-white.png" alt="Education Payments">
+					    	</a>
+				    	</span>
+				    	<a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+				 	</div>
+
+
+				 	<!-- NAVIGATION MENU -->
+				  	<div class="wsmainfull menu clearfix">
+	    				<div class="wsmainwp clearfix">
+
+
+	    					<!-- HEADER BLACK LOGO -->
+	    					<div class="desktoplogo">
+	    						<a href="#hero-11" class="logo-black">
+	    							<img class="lt-img" src="images/logo.png" alt="Education Payments">
+	    							<img class="dt-img" src="images/logo-white.png" alt="Education Payments">
+	    						</a>
+	    					</div>
+
+
+	    					<!-- HEADER WHITE LOGO -->
+	    					<div class="desktoplogo">
+	    						<a href="#hero-11" class="logo-white"><img src="images/logo-white.png" alt="Education Payments"></a>
+	    					</div>
+
+
+	    					<!-- MAIN MENU -->
+	      					<nav class="wsmenu clearfix">
+	        					<ul class="wsmenu-list nav-theme">
+
+
+	        						<!-- SIMPLE NAVIGATION LINK -->
+							    	<li class="nl-simple" aria-haspopup="true">
+							    		<a href="#features" class="h-link">Features</a>
+							    	</li>
+
+
+							    	<!-- SIMPLE NAVIGATION LINK -->
+							    	<li class="nl-simple" aria-haspopup="true">
+							    		<a href="#stakeholders" class="h-link">Who It's For</a>
+							    	</li>
+
+
+							    	<!-- SIMPLE NAVIGATION LINK -->
+							    	<li class="nl-simple" aria-haspopup="true">
+							    		<a href="#how-it-works" class="h-link">How It Works</a>
+							    	</li>
+
+
+							    	<!-- SIMPLE NAVIGATION LINK -->
+							    	<li class="nl-simple" aria-haspopup="true">
+							    		<a href="#payments" class="h-link">Payments</a>
+							    	</li>
+
+
+							    	<!-- SIMPLE NAVIGATION LINK -->
+							    	<li class="nl-simple" aria-haspopup="true">
+							    		<a href="#faqs" class="h-link">FAQ</a>
+							    	</li>
+
+
+								    <!-- BOOK A DEMO BUTTON -->
+								    <li class="nl-simple mobile-last-link" aria-haspopup="true">
+								    	<a href="contacts.html" class="btn r-10 btn--theme hover--black last-link">Request a Demo</a>
+								    </li>
+
+	        					</ul>
+	        				</nav>	<!-- END MAIN MENU -->
+
+
+	    				</div>
+	    			</div>	<!-- END NAVIGATION MENU -->
+
+
+				</div>     <!-- End header-wrapper -->
+			</header>	<!-- END HEADER -->
+
+
+
+			<!-- HERO
+			============================================= -->
+			<section id="hero-11" class="hero-section division">
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+
+						<!-- HERO TEXT -->
+						<div class="col-md-6">
+							<div class="hero-11-txt wow animate__animated animate__fadeInRight">
+
+								<!-- Eyebrow -->
+								<span class="section-id">Powered by SSLCOMMERZ</span>
+
+								<!-- Title -->
+								<h2>Simplify education payments. <span class="color--theme-2">Centralize every fee.</span></h2>
+
+								<!-- Text -->
+								<p class="p-lg">A secure, centralized and transparent education payment management platform that
+								   brings fee management, digital payments, student information and payment updates together
+								   in one place.
+								</p>
+
+								<!-- BUTTONS -->
+								<div class="btns-group">
+									<a href="contacts.html" class="btn r-10 btn--theme hover--black">Request a Demo</a>
+									<a href="#how-it-works" class="btn r-10 btn--tra-black hover--theme">See How It Works</a>
+								</div>
+
+								<!-- Trust line -->
+								<p class="p-sm btn-txt ico-15">
+									<span class="flaticon-shield color--theme"></span> Powered by the SSLCOMMERZ payment gateway with role-based access controls.
+								</p>
+
+							</div>
+						</div>	<!-- END HERO TEXT -->
+
+
+						<!-- HERO IMAGE -->
+						<div class="col-md-6">
+							<div class="hero-11-img wow animate__animated animate__fadeInLeft">
+								<img class="img-fluid lt-img" src="images/hero-banner.png" alt="Education Payments dashboard">
+								<!-- <img class="img-fluid dt-img" src="images/img-12d.png" alt="Education Payments dashboard"> -->
+							</div>
+						</div>
+
+
+					</div>    <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END HERO -->
+
+
+
+
+
+
+
+			<!-- DIVIDER LINE -->
+			<hr class="divider">
+
+
+        
+
+
+
+			<!-- WHO IT'S FOR — STAKEHOLDER #1 : SCHOOL ADMIN
+			============================================= -->
+			<section id="stakeholders" class="pt-100 ct-01 content-section division">
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+
+						<!-- IMAGE BLOCK -->
+						<div class="col-md-6">
+							<div class="img-block left-column wow animate__animated animate__fadeInRight">
+								<img class="img-fluid lt-img" src="images/for-educational.png" alt="School admin portal">
+								<!-- <img class="img-fluid dt-img" src="images/img-13d.png" alt="School admin portal"> -->
+							</div>
+						</div>
+
+
+						<!-- TEXT BLOCK -->
+						<div class="col-md-6">
+							<div class="txt-block right-column wow animate__animated animate__fadeInLeft">
+
+						 		<span class="section-id">For Educational Institutions</span>
+								<h2 class="h2-md">A centralized platform for the whole institution</h2>
+								<p>The School Portal provides administrative control over student records, fee structures,
+								   user roles, system settings and reports.
+								</p>
+
+								<ul class="simple-list">
+									<li class="list-item"><p>Student records, fee structures and user roles</p></li>
+									<li class="list-item"><p>System settings and reports</p></li>
+									<li class="list-item"><p>Student academic, attendance and payment information</p></li>
+									<li class="list-item"><p class="mb-0">Payment-related activities</p></li>
+								</ul>
+
+							</div>
+						</div>	<!-- END TEXT BLOCK -->
+
+
+					</div>    <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END STAKEHOLDER #1 -->
+
+
+
+			<!-- WHO IT'S FOR — STAKEHOLDER #2 : PARENTS & GUARDIANS
+			============================================= -->
+			<section class="pt-100 ct-01 content-section division">
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+
+						<!-- TEXT BLOCK -->
+						<div class="col-md-6 order-last order-md-2">
+							<div class="txt-block left-columnt wow animate__animated animate__fadeInRight">
+
+						 		<span class="section-id">For Parents &amp; Guardians</span>
+								<h2 class="h2-md">Convenient digital payment options</h2>
+								<p>Guardians get convenient digital payment options with access to payment details and
+								   history — no trip to the office.
+								</p>
+
+								<div class="cbox-7 mb-10">
+		 							<div class="cbox-7-ico ico-15"><span class="flaticon-check color--theme"></span></div>
+									<div class="cbox-7-txt"><p>View outstanding dues and review invoices / details</p></div>
+								</div>
+								<div class="cbox-7 mb-10">
+		 							<div class="cbox-7-ico ico-15"><span class="flaticon-check color--theme"></span></div>
+									<div class="cbox-7-txt"><p>Check payment history and transaction information</p></div>
+								</div>
+								<div class="cbox-7 mb-10">
+		 							<div class="cbox-7-ico ico-15"><span class="flaticon-check color--theme"></span></div>
+									<div class="cbox-7-txt"><p>Make payments digitally by card, mobile banking or net banking</p></div>
+								</div>
+								<div class="cbox-7">
+		 							<div class="cbox-7-ico ico-15"><span class="flaticon-check color--theme"></span></div>
+									<div class="cbox-7-txt"><p>Use web or mobile access</p></div>
+								</div>
+
+							</div>
+						</div>	<!-- END TEXT BLOCK -->
+
+
+						<!-- IMAGE BLOCK -->
+						<div class="col-md-6 order-first order-md-2">
+							<div class="img-block right-column wow animate__animated animate__fadeInLeft">
+								<img class="img-fluid lt-img" src="images/For Parents & Guardians.png" alt="Guardian payment app">
+								<!-- <img class="img-fluid dt-img" src="images/img-11d.png" alt="Guardian payment app"> -->
+							</div>
+						</div>
+
+
+					</div>    <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END STAKEHOLDER #2 -->
+
+
+
+			<!-- WHO IT'S FOR — STAKEHOLDER #3 : STUDENTS
+			============================================= -->
+			<section class="pt-100 ct-01 content-section division">
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+
+						<!-- IMAGE BLOCK -->
+						<div class="col-md-6">
+							<div class="img-block left-column wow animate__animated animate__fadeInRight">
+								<img class="img-fluid lt-img" src="images/for-students.png" alt="Student portal">
+								<!-- <img class="img-fluid dt-img" src="images/img-14d.png" alt="Student portal"> -->
+							</div>
+						</div>
+
+
+						<!-- TEXT BLOCK -->
+						<div class="col-md-6">
+							<div class="txt-block right-column wow animate__animated animate__fadeInLeft">
+
+						 		<span class="section-id">For Students</span>
+								<h2 class="h2-md">Easy access to payment information</h2>
+								<p>Students get easy access to payment information, dues and transaction history from the
+								   web portal or the mobile app.
+								</p>
+
+								<ul class="simple-list">
+									<li class="list-item"><p>Check dues and payment status</p></li>
+									<li class="list-item"><p>Review transaction history</p></li>
+									<li class="list-item"><p>Access academic and attendance records</p></li>
+									<li class="list-item"><p class="mb-0">Use the web portal or the Android / iOS app</p></li>
+								</ul>
+
+							</div>
+						</div>	<!-- END TEXT BLOCK -->
+
+
+					</div>    <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END STAKEHOLDER #3 -->
+
+
+
+			<!-- USE CASES
+			============================================= -->
+			<section id="use-cases" class="py-100 features-1 features-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row justify-content-center">
+						<div class="col-md-10 col-lg-9">
+							<div class="section-title text-center mb-70">
+								<span class="section-id">Use Cases</span>
+								<h2 class="h2-xl">Where it earns its place</h2>
+								<p class="p-lg">Situations institutions run into every term, and what changes once fee collection is centralized.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- USE CASES WRAPPER -->
+					<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" style="row-gap:24px">
+
+							<!-- USE CASE #1 -->
+							<div class="col">
+								<div class="uc-card wow animate__animated animate__fadeInUp animate__delay-1">
+									<div class="uc-head">
+										<div class="fbox-ico ico-50"><div class="shape-ico color--theme-2"><span class="flaticon-time"></span><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg></div></div>
+										<h5 class="h5-md">Monthly / Regular Fee Collection</h5>
+									</div>
+									<div class="uc-body">
+										<div class="uc-row"><span class="uc-label is-problem">Problem</span><p>Schools need to manage recurring student fees and keep track of collections.</p></div>
+										<div class="uc-row"><span class="uc-label is-help">How the platform helps</span><p>The Fee Management module supports fee calculation, collection and tracking.</p></div>
+									</div>
+									<div class="uc-outcome"><span class="flaticon-check"></span><p>A more centralized and structured fee collection process.</p></div>
+								</div>
+							</div>	<!-- END USE CASE #1 -->
+
+
+							<!-- USE CASE #2 -->
+							<div class="col">
+								<div class="uc-card wow animate__animated animate__fadeInUp animate__delay-2">
+									<div class="uc-head">
+										<div class="fbox-ico ico-50"><div class="shape-ico color--theme-2"><span class="flaticon-credit-card"></span><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg></div></div>
+										<h5 class="h5-md">Digital Payment for Guardians</h5>
+									</div>
+									<div class="uc-body">
+										<div class="uc-row"><span class="uc-label is-problem">Problem</span><p>Guardians need convenient ways to pay education-related fees.</p></div>
+										<div class="uc-row"><span class="uc-label is-help">How the platform helps</span><p>Guardians can pay using cards, mobile banking and net banking.</p></div>
+									</div>
+									<div class="uc-outcome"><span class="flaticon-check"></span><p>A more convenient digital payment experience.</p></div>
+								</div>
+							</div>	<!-- END USE CASE #2 -->
+
+
+							<!-- USE CASE #3 -->
+							<div class="col">
+								<div class="uc-card wow animate__animated animate__fadeInUp animate__delay-1">
+									<div class="uc-head">
+										<div class="fbox-ico ico-50"><div class="shape-ico color--theme-2"><span class="flaticon-pie-chart"></span><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg></div></div>
+										<h5 class="h5-md">Payment History &amp; Transaction Tracking</h5>
+									</div>
+									<div class="uc-body">
+										<div class="uc-row"><span class="uc-label is-problem">Problem</span><p>Students and guardians need to know what they owe and what they have already paid.</p></div>
+										<div class="uc-row"><span class="uc-label is-help">How the platform helps</span><p>The portal provides access to dues, payment information and transaction history.</p></div>
+									</div>
+									<div class="uc-outcome"><span class="flaticon-check"></span><p>Greater visibility and transparency around payments.</p></div>
+								</div>
+							</div>	<!-- END USE CASE #3 -->
+
+
+							<!-- USE CASE #4 -->
+							<div class="col">
+								<div class="uc-card wow animate__animated animate__fadeInUp animate__delay-2">
+									<div class="uc-head">
+										<div class="fbox-ico ico-50"><div class="shape-ico color--theme-2"><span class="flaticon-school-supplies"></span><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg></div></div>
+										<h5 class="h5-md">Centralized Student Information</h5>
+									</div>
+									<div class="uc-body">
+										<div class="uc-row"><span class="uc-label is-problem">Problem</span><p>Academic, attendance and payment information may need to be viewed across different processes.</p></div>
+										<div class="uc-row"><span class="uc-label is-help">How the platform helps</span><p>The platform brings academic performance, attendance and payment records into one unified system.</p></div>
+									</div>
+									<div class="uc-outcome"><span class="flaticon-check"></span><p>A more connected view of student information.</p></div>
+								</div>
+							</div>	<!-- END USE CASE #4 -->
+
+
+							<!-- USE CASE #5 -->
+							<div class="col">
+								<div class="uc-card wow animate__animated animate__fadeInUp animate__delay-1">
+									<div class="uc-head">
+										<div class="fbox-ico ico-50"><div class="shape-ico color--theme-2"><span class="flaticon-flow-chart"></span><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg></div></div>
+										<h5 class="h5-md">School Administration</h5>
+									</div>
+									<div class="uc-body">
+										<div class="uc-row"><span class="uc-label is-problem">Problem</span><p>Administrators need a centralized environment to manage student and fee-related information.</p></div>
+										<div class="uc-row"><span class="uc-label is-help">How the platform helps</span><p>The School Portal provides control over student records, fee structures, user roles, settings and reports.</p></div>
+									</div>
+									<div class="uc-outcome"><span class="flaticon-check"></span><p>More centralized administration and better information visibility.</p></div>
+								</div>
+							</div>	<!-- END USE CASE #5 -->
+
+
+							<!-- USE CASE #6 -->
+							<div class="col">
+								<div class="uc-card wow animate__animated animate__fadeInUp animate__delay-2">
+									<div class="uc-head">
+										<div class="fbox-ico ico-50"><div class="shape-ico color--theme-2"><span class="flaticon-email"></span><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg></div></div>
+										<h5 class="h5-md">Payment-Related Notifications</h5>
+									</div>
+									<div class="uc-body">
+										<div class="uc-row"><span class="uc-label is-problem">Problem</span><p>Students and schools need timely updates.</p></div>
+										<div class="uc-row"><span class="uc-label is-help">How the platform helps</span><p>The solution includes automated SMS and email notifications.</p></div>
+									</div>
+									<div class="uc-outcome"><span class="flaticon-check"></span><p>More consistent communication around relevant updates.</p></div>
+								</div>
+							</div>	<!-- END USE CASE #6 -->
+
+					</div>
+
+
+				</div>
+			</section>	<!-- END USE CASES -->
+
+
+
+
+			<!-- HOW IT WORKS
+			============================================= -->
+			<section id="how-it-works" class="py-100 features-1 features-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row justify-content-center">
+						<div class="col-md-10 col-lg-9">
+							<div class="section-title text-center mb-70">
+								<span class="section-id">How It Works</span>
+								<h2 class="h2-xl">From fee setup to digital payment &mdash; all in one flow</h2>
+								<p class="p-lg">A single, repeatable flow across the institution, the student or guardian and the gateway.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- STEP FLOW -->
+					<div class="hiw-flow row row-cols-1 row-cols-sm-2 row-cols-lg-5" style="row-gap:44px">
+
+							<!-- STEP 1 -->
+						<div class="col">
+							<div class="hiw-step wow animate__animated animate__fadeInUp animate__delay-1">
+								<div class="hiw-card">
+									<span class="hiw-tag">1</span>
+									<div class="fbox-ico ico-60">
+										<div class="shape-ico color--theme-2">
+											<span class="flaticon-folder-1"></span>
+											<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+										</div>
+									</div>
+									<span class="hiw-step-label">Step 01</span>
+									<h6 class="h6-lg">Manage Student &amp; Fee Information</h6>
+									<p>The institution manages student records and fee structures through the School Portal.</p>
+								</div>
+							</div>
+						</div>	<!-- END STEP 1 -->
+
+							<!-- STEP 2 -->
+						<div class="col">
+							<div class="hiw-step wow animate__animated animate__fadeInUp animate__delay-2">
+								<div class="hiw-card">
+									<span class="hiw-tag">2</span>
+									<div class="fbox-ico ico-60">
+										<div class="shape-ico color--theme-2">
+											<span class="flaticon-price-label"></span>
+											<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+										</div>
+									</div>
+									<span class="hiw-step-label">Step 02</span>
+									<h6 class="h6-lg">Make Fees Available</h6>
+									<p>Relevant fee information and dues become accessible through the student / guardian experience.</p>
+								</div>
+							</div>
+						</div>	<!-- END STEP 2 -->
+
+							<!-- STEP 3 -->
+						<div class="col">
+							<div class="hiw-step wow animate__animated animate__fadeInUp animate__delay-3">
+								<div class="hiw-card">
+									<span class="hiw-tag">3</span>
+									<div class="fbox-ico ico-60">
+										<div class="shape-ico color--theme-2">
+											<span class="flaticon-magnifying-glass"></span>
+											<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+										</div>
+									</div>
+									<span class="hiw-step-label">Step 03</span>
+									<h6 class="h6-lg">Student or Guardian Checks Dues</h6>
+									<p>Users can view their outstanding dues, payment details and transaction history.</p>
+								</div>
+							</div>
+						</div>	<!-- END STEP 3 -->
+
+							<!-- STEP 4 -->
+						<div class="col">
+							<div class="hiw-step wow animate__animated animate__fadeInUp animate__delay-4">
+								<div class="hiw-card">
+									<span class="hiw-tag">4</span>
+									<div class="fbox-ico ico-60">
+										<div class="shape-ico color--theme-2">
+											<span class="flaticon-transaction"></span>
+											<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+										</div>
+									</div>
+									<span class="hiw-step-label">Step 04</span>
+									<h6 class="h6-lg">Make a Digital Payment</h6>
+									<p>The guardian selects an available payment method such as card, mobile banking or net banking.</p>
+								</div>
+							</div>
+						</div>	<!-- END STEP 4 -->
+
+							<!-- STEP 5 -->
+						<div class="col">
+							<div class="hiw-step wow animate__animated animate__fadeInUp animate__delay-1">
+								<div class="hiw-card">
+									<span class="hiw-tag">5</span>
+									<div class="fbox-ico ico-60">
+										<div class="shape-ico color--theme-2">
+											<span class="flaticon-message"></span>
+											<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+										</div>
+									</div>
+									<span class="hiw-step-label">Step 05</span>
+									<h6 class="h6-lg">Stay Updated</h6>
+									<p>The platform supports automated SMS and email notifications for students and schools.</p>
+								</div>
+							</div>
+						</div>	<!-- END STEP 5 -->
+
+					</div>
+
+
+				</div>
+			</section>	<!-- END HOW IT WORKS -->
+
+
+
+			
+
+
+	<!-- TEXT CONTENT
+			============================================= -->
+			<section class="pt-100 ct-03 content-section division">
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+
+						<!-- TEXT BLOCK -->	
+			 			<div class="col-md-6 order-last order-md-2">
+			 				<div class="txt-block left-column wow animate__animated animate__fadeInRight">
+
+			 					<!-- Section ID -->	
+						 		<span class="section-id">Intuitive Dashboard</span>
+
+								<!-- Title -->	
+								<h2 class="h2-md">A complete payment view for every school</h2>
+                                <p class="p-lg">Track dues, collections, receipts and payment channel performance from a modern dashboard experience.</p>
+
+								<!-- Text -->	
+								<p>Tempor sapien sodales quaerat ipsum congue undo laoreet turpis neque auctor turpis vitae dolor
+								   luctus placerat magna and ligula cursus purus vitae purus an ipsum suscipit auris
+								</p>
+
+								<!-- Text -->	
+								<p>Tempor sapien sodales quaerat ipsum congue undo laoreet turpis neque auctor turpis vitae dolor
+								   luctus placerat magna and ligula cursus purus vitae purus ipsum suscipit aliquet
+								</p>
+
+								<!-- STATISTIC -->	
+								<div class="txt-block-stat mt-35">
+									
+									<!-- STATISTIC BLOCK #1 -->
+									<div id="sb-3-1" class="statistic-block wow animate__animated animate__fadeInUp">	
+										<div class="statistic-block">
+											<h2 class="statistic-number"><span class="count-element">65</span>k</h2>
+											<p>Porta justo integer <br> a velna vitae auctor</p>
+										</div>		
+									</div>
+
+									<!-- STATISTIC BLOCK #2 -->
+									<div id="sb-3-2" class="statistic-block wow animate__animated animate__fadeInUp">	
+										<div class="statistic-block">
+											<h2 class="statistic-number"><span class="count-element">86</span>%</h2>
+											<p>Porta justo integer <br> velna a vitae auctor</p>
+										</div>	
+									</div>	<!-- END STATISTIC BLOCK #2 -->
+
+								</div>	<!-- END STATISTIC -->	
+
+			 				</div>
+					 	</div>	<!-- END TEXT BLOCK -->		
+
+
+						<!-- IMAGE BLOCK -->	
+						<div class="col-md-6 order-first order-md-2">
+							<div class="img-block wow animate__animated animate__fadeInLeft">
+								<img class="img-fluid" src="images/dashboard.png" alt="content-image">
+							</div>	
+						</div>
+
+
+					</div>    <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END TEXT CONTENT -->
+	 
+
+ 
+
+
+		 
+
+
+		 
+
+
+
+			<!-- BRANDS
+			============================================= -->
+			<div class="py-80 brands-1 brands-section">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-10 col-lg-9 col-xl-7">
+							<div class="brands-title">
+								<p class="p-md">Works with the payment methods, banks and channels families already trust</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col text-center">
+							<div class="owl-carousel brands-carousel-6">
+								<div class="brand-logo"><a href="#"><img class="img-fluid" src="images/bkash.png" alt="brand-logo"></a></div>
+								<div class="brand-logo"><a href="#"><img class="img-fluid" src="images/nagad.svg" alt="brand-logo"></a></div>
+								<div class="brand-logo"><a href="#"><img class="img-fluid" src="images/rocket.png" alt="brand-logo"></a></div>
+								<div class="brand-logo"><a href="#"><img class="img-fluid" src="images/visa.png" alt="brand-logo"></a></div>
+								<div class="brand-logo"><a href="#"><img class="img-fluid" src="images/mastercard.webp" alt="brand-logo"></a></div>
+								<div class="brand-logo"><a href="#"><img class="img-fluid" src="images/sslcommerz.png" alt="brand-logo"></a></div>
+								
+							</div>
+						</div>
+					</div>  <!-- END BRANDS CAROUSEL -->
+
+				</div>	<!-- End container -->
+			</div>	<!-- END BRANDS -->
+
+
+
+			<!-- DIVIDER LINE -->
+			<hr class="divider">
+
+
+
+			<!-- SMART REMINDERS
+			============================================= -->
+			<!-- <section class="pt-100 ct-01 content-section division">
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+						<div class="col-md-6">
+							<div class="img-block left-column wow animate__animated animate__fadeInRight">
+								<img class="img-fluid lt-img" src="images/notification.png" alt="reminders-image">
+								 
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="txt-block right-column wow animate__animated animate__fadeInLeft">
+						 		<span class="section-id">Smart Reminders</span>
+								<h2 class="h2-md">Send due notices without chasing spreadsheets</h2>
+								<p>Keep guardians informed with clear dues, payment links and confirmation details tied to each student account.</p>
+								<ul class="simple-list">
+									<li class="list-item"><p>Segment notices by class, fee type, status or due date.</p></li>
+									<li class="list-item"><p class="mb-0">Reduce support calls by keeping outstanding payments visible before deadlines.</p></li>
+								</ul>
+							</div>
+						</div>	 
+
+					</div>     
+				</div>	  
+			</section>	  -->
+
+
+			<!-- FEATURES
+			============================================= -->
+			<!-- COMPLETE SOLUTIONS
+			============================================= -->
+			<section class="pt-100 features-5 features-section">
+				<div class="container">
+
+
+					<!-- FEATURES WRAPPER -->
+					<div class="fbox-5-wrapper cs-wrapper r-24 text-center">
+
+
+						<!-- SECTION TITLE -->
+						<div class="row justify-content-center">
+							<div class="col-lg-11 col-xl-10">
+								<div class="section-title mb-60 text-center">
+									<h2 class="h2-xl">The Complete Solution</h2>
+									<p class="p-lg">Keeping everyone informed, and every record reachable only by the people who should see it.</p>
+								</div>
+							</div>
+						</div>	<!-- END SECTION TITLE -->
+
+
+						<div class="row d-flex align-items-center">
+
+
+							<!-- FEATURE BOX #1 -->
+							<div class="col-md-6">
+								<div class="fbox-5 fb-1 bg--white r-24 block--shadow wow animate__animated animate__fadeInUp animate__delay-1">
+
+									<div class="fbox-5-img">
+										<img class="img-fluid lt-img" src="images/f_01.png" alt="Automated SMS and email notifications">
+										<img class="img-fluid dt-img" src="images/f_01d.png" alt="Automated SMS and email notifications">
+									</div>
+
+									<div class="fbox-txt">
+										<h5 class="h5-md">Automated SMS &amp; Email Notifications</h5>
+										<p class="mb-0">An automated notification system supporting SMS and email keeps students and schools informed
+										   around dues, payments and system updates.
+										</p>
+									</div>
+
+								</div>
+							</div>	<!-- END FEATURE BOX #1 -->
+
+
+							<!-- FEATURE BOX #2 -->
+							<div class="col-md-6">
+								<div class="fbox-5 fb-2 bg--white r-24 block--shadow wow animate__animated animate__fadeInUp animate__delay-2">
+
+									<div class="fbox-5-img">
+										<img class="img-fluid lt-img" src="images/f_02.png" alt="Secure role-based access">
+										<img class="img-fluid dt-img" src="images/f_02d.png" alt="Secure role-based access">
+									</div>
+
+									<div class="fbox-txt">
+										<h5 class="h5-md">Secure, Role-Based Access</h5>
+										<p class="mb-0">A secure platform with role-based access controls, so administrators, students and guardians
+										   each reach only what their role permits.
+										</p>
+									</div>
+
+								</div>
+							</div>	<!-- END FEATURE BOX #2 -->
+
+
+						</div>   <!-- End row -->
+					</div>    <!-- END FEATURES WRAPPER -->
+
+
+				</div>     <!-- End container -->
+			</section>	<!-- END COMPLETE SOLUTIONS -->
+
+
+
+			<section id="key-features" class="py-100 features-2 features-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row justify-content-center">
+						<div class="col-md-9 col-lg-8">
+							<div class="section-title text-center mb-80">
+								<h2 class="h2-xl">Everything in One Place</h2>
+								<p class="p-lg">Every module the scope calls for &mdash; fee management, payments, portals, tracking and communication &mdash; in one platform.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- FEATURES WRAPPER -->
+					<div class="fbox-wrapper">
+						<div class="row row-cols-1 row-cols-md-2 kf-grid">
+
+							<!-- FEATURE BOX #1 -->
+						<div class="col">
+							<div class="fbox-2 fb-1 wow animate__animated animate__fadeInUp animate__delay-1">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-piggy-bank"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Centralized Fee Management</h5>
+									<p>Automate the calculation, collection and tracking of student fees through a dedicated Fee Management module.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Less manual coordination and better visibility of fee-related information.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #1 -->
+
+
+							<!-- FEATURE BOX #2 -->
+						<div class="col">
+							<div class="fbox-2 fb-2 wow animate__animated animate__fadeInUp animate__delay-2">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-credit-card"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Digital Payment Gateway Integration</h5>
+									<p>The solution integrates a digital payment gateway so guardians can pay through multiple supported payment channels.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Give guardians a convenient way to complete payments digitally.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #2 -->
+
+
+							<!-- FEATURE BOX #3 -->
+						<div class="col">
+							<div class="fbox-2 fb-3 wow animate__animated animate__fadeInUp animate__delay-3">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-browser"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Student &amp; Guardian Web Portal</h5>
+									<p>Users can view dues, payment details and transaction history through the web portal.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Better visibility and easier access to payment information.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #3 -->
+
+
+							<!-- FEATURE BOX #4 -->
+						<div class="col">
+							<div class="fbox-2 fb-4 wow animate__animated animate__fadeInUp animate__delay-4">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-smartphone"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Mobile Application</h5>
+									<p>The solution includes mobile applications for Android and iOS.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Give students and guardians access to the platform through mobile devices.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #4 -->
+
+
+							<!-- FEATURE BOX #5 -->
+						<div class="col">
+							<div class="fbox-2 fb-5 wow animate__animated animate__fadeInUp animate__delay-1">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-school-supplies"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Student Academic, Attendance &amp; Payment Tracking</h5>
+									<p>The platform provides a unified system for tracking academic performance, attendance and payment records.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Create a more connected view of student-related information.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #5 -->
+
+
+							<!-- FEATURE BOX #6 -->
+						<div class="col">
+							<div class="fbox-2 fb-6 wow animate__animated animate__fadeInUp animate__delay-2">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-email"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Automated SMS &amp; Email Notifications</h5>
+									<p>The solution includes an automated notification system supporting SMS and email.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Improve communication around important payment and system updates.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #6 -->
+
+
+							<!-- FEATURE BOX #7 -->
+						<div class="col">
+							<div class="fbox-2 fb-7 wow animate__animated animate__fadeInUp animate__delay-3">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-wallet"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Multiple Payment Methods</h5>
+									<p>Supported payment options include cards (Visa, Mastercard and others), mobile banking (bKash, Nagad, Rocket and more) and net banking (direct bank payments from leading banks).</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Make payment more accessible and convenient for guardians.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #7 -->
+
+
+							<!-- FEATURE BOX #8 -->
+						<div class="col">
+							<div class="fbox-2 fb-8 wow animate__animated animate__fadeInUp animate__delay-4">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-flow-chart"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>School Administration Portal</h5>
+									<p>The School Portal supports management of student records, fee structures, user roles, system settings and reports.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Give administrators a centralized environment for managing the solution.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #8 -->
+
+
+							<!-- FEATURE BOX #9 -->
+						<div class="col">
+							<div class="fbox-2 fb-9 wow animate__animated animate__fadeInUp animate__delay-1">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-pie-chart"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Transaction &amp; Invoice Visibility</h5>
+									<p>Students and guardians can view their dues, payment information and transaction history through the portal.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">Improve transparency around payments.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #9 -->
+
+
+							<!-- FEATURE BOX #10 -->
+						<div class="col">
+							<div class="fbox-2 fb-10 wow animate__animated animate__fadeInUp animate__delay-2">
+								<div class="fbox-ico-wrap ico-55">
+									<div class="shape-ico color--theme-2">
+										<span class="flaticon-layer"></span>
+										<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M66.1,-32.6C77.9,-17.7,74.4,11.6,60.8,35.7C47.2,59.7,23.6,78.5,2.8,76.9C-18,75.2,-35.9,53.2,-47.7,30.1C-59.5,7.1,-65.1,-16.9,-56.1,-30.1C-47.1,-43.4,-23.6,-46,1.8,-47C27.2,-48.1,54.3,-47.6,66.1,-32.6Z" transform="translate(100 100)" /></svg>
+									</div>
+								</div>
+								<div class="fbox-txt">
+									<h5>Multifunctional Merchant Panel</h5>
+									<p>A centralized management interface for the education payment ecosystem.</p>
+									<span class="uc-label is-help" style="display:inline-block;margin-top:10px">Customer Value</span>
+									<p class="p-sm" style="color:#6a7382;margin-top:2px">A single control point across fee management, payments and reporting.</p>
+								</div>
+							</div>
+						</div>	<!-- END FEATURE BOX #10 -->
+
+					</div>  <!-- End row -->
+					</div>	<!-- END FEATURES WRAPPER -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END KEY FEATURES -->
+
+
+
+
+
+
+
+
+
+			<!-- DIVIDER LINE -->
+			<hr class="divider">
+
+
+
+	 
+
+
+		 
+
+
+
+			<!-- TECHNOLOGY &amp; SECURITY
+			============================================= -->
+			<section id="technology" class="pt-100 division">
+				<div class="container">
+					<div class="tech-panel">
+						<div class="section-title text-center mb-60">
+							<span class="section-id">Technology &amp; Security</span>
+							<h2 class="h2-xl">Technology built for connected education payment management</h2>
+							<p class="p-lg">A modern, role-based stack behind fee management, digital payments and student information.</p>
+						</div>
+						<div class="tech-grid">
+							<div class="col"><div class="tech-card wow animate__animated animate__fadeInUp animate__delay-1"><div class="tech-logo-wrap"><img src="images/flutter-logo.png" alt="Flutter logo" loading="lazy"></div><span class="tech-layer">Mobile App</span><p class="tech-name">Flutter</p></div></div>
+							<div class="col"><div class="tech-card wow animate__animated animate__fadeInUp animate__delay-2"><div class="tech-logo-wrap"><img src="images/react-js-icon.webp" alt="React.js logo" loading="lazy"></div><span class="tech-layer">Frontend</span><p class="tech-name">React.js</p></div></div>
+							<div class="col"><div class="tech-card wow animate__animated animate__fadeInUp animate__delay-3"><div class="tech-logo-wrap"><img src="images/Laravel-Logo.wine.svg" alt="Laravel logo" loading="lazy"></div><span class="tech-layer">Backend</span><p class="tech-name">PHP &mdash; Laravel </p></div></div>
+							<div class="col"><div class="tech-card wow animate__animated animate__fadeInUp animate__delay-4"><div class="tech-logo-wrap"><img src="images/restful-api.png" alt="RESTful API icon" loading="lazy"></div><span class="tech-layer">API</span><p class="tech-name">RESTful API</p></div></div>
+							<div class="col"><div class="tech-card wow animate__animated animate__fadeInUp animate__delay-1"><div class="tech-logo-wrap"><img src="images/MySQL-Logo.svg" alt="MySQL logo" loading="lazy"></div><span class="tech-layer">Database</span><p class="tech-name">MySQL </p></div></div>
+							<div class="col"><div class="tech-card wow animate__animated animate__fadeInUp animate__delay-2"><div class="tech-logo-wrap"><img src="images/png_icons/firebase.png" alt="Firebase logo" loading="lazy"></div><span class="tech-layer">Notifications</span><p class="tech-name">Firebase + SMS Gateway</p></div></div>
+							<div class="col"><div class="tech-card wow animate__animated animate__fadeInUp animate__delay-3"><div class="tech-logo-wrap"><img src="images/sslcommerz.png" alt="SSLCOMMERZ logo" loading="lazy"></div><span class="tech-layer">Payment Gateway</span><p class="tech-name">SSLCOMMERZ</p></div></div>
+						</div>
+						</div>
+						<div class="tech-security-line">
+							<span class="flaticon-shield color--theme"></span>
+							<p>Presented as a secure platform, with role-based access controls across the system.</p>
+						</div>
+					</div>
+				</div>
+			</section>	<!-- END TECHNOLOGY -->
+
+
+
+
+
+ 
+
+			<section id="faqs" class="pt-100 faqs-1 faqs-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row justify-content-center">
+						<div class="col-md-9 col-lg-8">
+							<div class="section-title text-center mb-60">
+								<h2 class="h2-xl">Questions? Look Here.</h2>
+								<p class="p-lg">Answers to common questions schools ask before moving fee collection online.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- FAQs QUESTIONS -->
+					<div class="faqs-1-questions">
+						<div class="row justify-content-center">
+
+
+							<!-- QUESTIONS ACCORDION -->
+							<div class="col-xl-11">
+					 			<div class="accordion-wrapper">
+									<ul class="accordion">
+
+
+										<!-- QUESTION #1 -->
+										<li class="accordion-item is-active wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>What is the Education Payment Management Solution?</h5></div>
+											<div class="accordion-panel">
+												<p>It is a centralized platform for educational institutions to manage fees, digital payments, student information and payment-related communication.</p>
+											</div>
+										</li>	<!-- END QUESTION #1 -->
+
+
+										<!-- QUESTION #2 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Who can use the platform?</h5></div>
+											<div class="accordion-panel">
+												<p>The solution is designed around educational institutions, administrators, students and guardians.</p>
+											</div>
+										</li>	<!-- END QUESTION #2 -->
+
+
+										<!-- QUESTION #3 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Can guardians pay fees online?</h5></div>
+											<div class="accordion-panel">
+												<p>Yes &mdash; through cards, mobile banking and net banking.</p>
+											</div>
+										</li>	<!-- END QUESTION #3 -->
+
+
+										<!-- QUESTION #4 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Which payment methods are supported?</h5></div>
+											<div class="accordion-panel">
+												<ul class="simple-list">
+													<li class="list-item"><p>Visa, Mastercard and other cards</p></li>
+													<li class="list-item"><p>bKash, Nagad, Rocket and other mobile banking services</p></li>
+													<li class="list-item"><p class="mb-0">Direct payments through leading banks via net banking</p></li>
+												</ul>
+											</div>
+										</li>	<!-- END QUESTION #4 -->
+
+
+										<!-- QUESTION #5 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Is there a mobile application?</h5></div>
+											<div class="accordion-panel">
+												<p>Yes. The solution includes applications for both <strong>Android and iOS</strong>.</p>
+											</div>
+										</li>	<!-- END QUESTION #5 -->
+
+
+										<!-- QUESTION #6 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Is there a web portal?</h5></div>
+											<div class="accordion-panel">
+												<p>Yes. The solution includes a responsive web interface for administrators and students.</p>
+											</div>
+										</li>	<!-- END QUESTION #6 -->
+
+
+										<!-- QUESTION #7 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Can students and guardians see their payment history?</h5></div>
+											<div class="accordion-panel">
+												<p>Yes. The Student / Guardian Portal allows users to see dues, payments and transaction histories.</p>
+											</div>
+										</li>	<!-- END QUESTION #7 -->
+
+
+										<!-- QUESTION #8 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Can schools manage student and fee information?</h5></div>
+											<div class="accordion-panel">
+												<p>Yes. The School Portal provides administrative control for student records, fee structures, user roles, system settings and reports.</p>
+											</div>
+										</li>	<!-- END QUESTION #8 -->
+
+
+										<!-- QUESTION #9 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Does the platform support notifications?</h5></div>
+											<div class="accordion-panel">
+												<p>Yes. The solution includes an automated notification system using SMS and email.</p>
+											</div>
+										</li>	<!-- END QUESTION #9 -->
+
+
+										<!-- QUESTION #10 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Can the platform track academic and attendance information?</h5></div>
+											<div class="accordion-panel">
+												<p>The unified platform can track student academic performance, attendance and payment records.</p>
+											</div>
+										</li>	<!-- END QUESTION #10 -->
+
+
+										<!-- QUESTION #11 -->
+										<li class="accordion-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>What technology does the platform use?</h5></div>
+											<div class="accordion-panel">
+												<p>The technology stack includes Flutter, React.js / Material UI, PHP (Laravel / Core PHP), RESTful APIs, MySQL, Firebase Cloud Messaging, SMS Gateway integration and the SSLCOMMERZ payment gateway.</p>
+											</div>
+										</li>	<!-- END QUESTION #11 -->
+
+
+										<!-- QUESTION #12 -->
+										<li class="accordion-item acc-last-item wow animate__animated animate__fadeInUp">
+											<div class="accordion-thumb"><h5>Is the platform secure?</h5></div>
+											<div class="accordion-panel">
+												<p>It is presented as a secure platform and identifies role-based access controls.</p>
+											</div>
+										</li>	<!-- END QUESTION #12 -->
+
+
+									</ul>
+								</div>
+					 		</div>	<!-- END QUESTIONS ACCORDION -->
+
+
+					 		<!-- MORE QUESTIONS -->
+							<div class="more-questions clearfix">
+								<div class="more-questions-holder wow animate__animated animate__fadeInUp">
+									<div class="more-questions-txt">
+										<h6 class="h6-xl">Can't find the answer to your question?</h6>
+										<p class="p-sm">Contact us and we'll get back to you as soon as we can.</p>
+									</div>
+									<div class="more-questions-btn">
+										<a href="contacts.html" class="btn r-10 btn--tra-black hover--black">Contact Us</a>
+									</div>
+								</div>
+							</div>
+
+
+						</div>  <!-- End row -->
+					</div>	<!-- END FAQs QUESTIONS -->
+
+
+				</div>	   <!-- End container  -->
+			</section>	<!-- END FAQs -->
+
+
+
+			<!-- BANNER
+			============================================= -->
+			<section id="download" class="pt-100 banner-1 banner-section">
+				<div class="container">
+					<div class="banner-1-wrapper footer-cta-bg bg--fixed r-24">
+						<div class="banner-overlay">
+							<div class="row d-flex align-items-center">
+
+								<div class="col-md-7">
+									<div class="banner-1-txt color--white">
+										<h2 class="h2-xl">Start simplifying school payments today</h2>
+										<p class="p-lg">See how digital fee collection can fit your institution's existing workflow.</p>
+										<a href="contacts.html" class="btn r-10 btn-md btn--theme-2 hover--tra-white">Contact Us</a>
+										<p class="p-sm btns-group-txt ico-15">
+											<span class="flaticon-check"></span> Gateway-ready setup for education payment flows.
+										</p>
+									</div>
+								</div>	<!-- END BANNER TEXT -->
+
+								<div class="banner-qr-code">
+									<img class="img-fluid" src="images/qr-code.png" alt="qr-code-image">
+									<p>Scan to view the platform</p>
+								</div>
+
+							</div>   <!-- End row -->
+						</div>   <!-- End banner overlay -->
+					</div>    <!-- END BANNER WRAPPER -->
+				</div>     <!-- End container -->
+			</section>	<!-- END BANNER -->
+
+
+
+		 
+
+
+			<!-- FOOTER
+			============================================= -->
+			<footer class="pt-100 footer-1 footer ft-2-rows division">
+				<div class="container">
+
+
+					<!-- FOOTER CONTENT -->
+					<div class="row footer-links clearfix">
+
+
+						<!-- FOOTER BRAND -->
+					 	<div class="col-md-4">
+					 		<div class="fl-1">
+						        <h6 class="d-title">Education Payments</h6>
+						        <h6 class="m-title">Education Payments</h6>
+								<p class="p-sm"><strong>One platform for smarter education payments.</strong> Centralize fee management, simplify digital payments, connect student information and keep students and schools informed.</p>
+								<p class="p-sm">A SSLWIRELESS product · Powered by SSLCOMMERZ.</p>
+							</div>
+					    </div>	<!-- END FOOTER BRAND -->
+
+
+					   <!-- FOOTER LINKS — PRODUCT -->
+						<div class="col-md-3 col-lg-2">
+							<div class="fl-2">
+								<h6 class="d-title">Product</h6>
+						        <h6 class="m-title">Product</h6>
+								<ul class="foo-links clearfix">
+									<li><p><a href="#features">Features</a></p></li>
+									<li><p><a href="#how-it-works">How It Works</a></p></li>
+									<li><p><a href="#payments">Payment Methods</a></p></li>
+									<li><p><a href="#features">Technology &amp; Security</a></p></li>
+								</ul>
+							</div>
+						</div>	<!-- END FOOTER LINKS — PRODUCT -->
+
+
+						<!-- FOOTER LINKS — COMPANY -->
+					 	<div class="col-md-2">
+					 		<div class="fl-3">
+						        <h6 class="d-title">Company</h6>
+						        <h6 class="m-title">Company</h6>
+						     	<ul class="foo-links clearfix">
+						     	 	<li><p><a href="contacts.html">About SSLWIRELESS</a></p></li>
+						     	 	<li><p><a href="#payments">SSLCOMMERZ Gateway</a></p></li>
+						     	 	<li><p><a href="contacts.html">Contact</a></p></li>
+						     	 	<li><p><a href="contacts.html">Request a Demo</a></p></li>
+								</ul>
+							</div>
+					    </div>	<!-- END FOOTER LINKS — COMPANY -->
+
+
+					    <!-- FOOTER LINKS — RESOURCES + CONTACT -->
+					 	<div class="col-md-3 col-lg-3">
+					 		<div class="fl-4">
+						        <h6 class="d-title">Resources</h6>
+						        <h6 class="m-title">Resources</h6>
+						     	<ul class="foo-links clearfix">
+									<li><p><a href="#faqs">FAQ</a></p></li>
+									<li><p><a href="#stakeholders">For Schools</a></p></li>
+									<li><p><a href="#stakeholders">For Guardians</a></p></li>
+								</ul>
+								<!-- ⚠️ PLACEHOLDER contact — use the official support line only, never a personal number. -->
+								<ul class="foo-links clearfix">
+									<li><p><a href="mailto:[SUPPORT_EMAIL]">[SUPPORT_EMAIL]</a></p></li>
+									<li><p>[SUPPORT_PHONE]</p></li>
+									<li><p>Dhaka, Bangladesh</p></li>
+								</ul>
+							</div>
+					 	</div>	<!-- END FOOTER LINKS — RESOURCES -->
+
+
+					</div>	<!-- END FOOTER CONTENT -->
+
+
+					<hr>	<!-- FOOTER DIVIDER LINE -->
+
+
+					<!-- BOTTOM FOOTER -->
+					<div class="bottom-footer">
+						<div class="row row-cols-1 row-cols-md-2 d-flex align-items-center">
+
+
+							<!-- FOOTER COPYRIGHT -->
+							<div class="col">
+								<div class="footer-copyright copyright-logo footer-copyright-fix">
+									<div class="footer-copyright-logo">
+										<img class="footer-logo lt-img" src="images/logo.png" alt="Education Payments">
+										<img class="footer-logo dt-img" src="images/logo-white.png" alt="Education Payments">
+									</div>
+									<div class="footer-copyright-text">
+										<p class="p-sm">&copy; 2026 Education Payments. <span> A SSLWIRELESS product. All Rights Reserved.</span></p>
+										<p class="p-sm"><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
+									</div>
+								</div>
+							</div>
+
+
+							<!-- FOOTER SOCIALS -->
+							<div class="col">
+								<ul class="bottom-footer-socials ico-20 text-end">
+									<li><a href="#"><span class="flaticon-facebook"></span></a></li>
+									<li><a href="#"><span class="flaticon-linkedin"></span></a></li>
+								</ul>
+							</div>
+
+
+						</div>  <!-- End row -->
+					</div>	<!-- END BOTTOM FOOTER -->
+
+
+				</div>     <!-- End container -->
+			</footer>   <!-- END FOOTER -->
+
+
+
+		</div>	<!-- END PAGE CONTENT -->
+
+
+
+		<!-- EXTERNAL SCRIPTS
+		============================================= -->
+		<script src="js/jquery-3.7.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/jquery.easing.min.js"></script>
+		<script src="js/jquery.appear.js"></script>
+		<script src="js/menu.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script src="js/isotope.pkgd.min.js"></script>
+		<script src="js/jquery.magnific-popup.min.js"></script>
+		<script src="js/quick-form.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/jquery.ajaxchimp.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/lunar.js"></script>
+		<script src="js/wow.js"></script>
+		<script src="js/cookies-message.js"></script>
+
+		<!-- Custom Script -->
+		<script src="js/custom.js"></script>
+
+		<!-- COOKIES MESSAGE -->
+        <script>
+        	$(document).ready(function () {
+        		setTimeout(function () {
+	      			$.CookiesMessage();
+	      		}, 1800)
+	      	});
+	    </script>
+
+
+
+	</body>
+</html>
