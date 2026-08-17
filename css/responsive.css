@@ -3,9 +3,9 @@
 
 
 /*
-  Template Name: Pintex - Mobile App & Software Landing Page Template
+  Template Name:   - Mobile App & Software Landing Page Template
   Theme URL: https://themeforest.net/user/jthemes
-  Description: Pintex - Mobile App Landing Page Template
+  Description:   - Mobile App Landing Page Template
   Author: Jthemes
   Author URL: https://themeforest.net/user/jthemes
   Version: 1.0.0
@@ -963,7 +963,7 @@
 
   .contacts-1 .contact-form .contact-form-notice p { font-size: 0.9rem; line-height: 1.65; margin-top: 30px; }
   
-  .contact-form .form-control, .contact-form .form-select { height: 54px; margin-bottom: 24px; }
+  .contact-form .form-control, .contact-form .form-select { height: 54px; margin-bottom: 16px; }
   .contact-form textarea { min-height: 160px; }
 
   /* FOOTER */
@@ -2231,7 +2231,7 @@
   .contacts-1 .contact-form p { font-size: 1.05rem; margin-bottom: 14px; padding-left: 10px; }
   .contacts-1 .contact-form .contact-form-notice p { font-size: 0.95rem; margin-top: 25px; }
 
-  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.05rem; padding: 0 15px; margin-bottom: 20px; }
+  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.05rem; padding: 0 15px; margin-bottom: 14px; }
   .contact-form textarea { min-height: 130px; }
   .contact-form textarea.form-control { padding: 15px; }
 
@@ -3876,7 +3876,7 @@
   .contacts-info p { margin-top: 15px; margin-bottom: 22px; }
   .contacts-1 .contact-form .contact-form-notice p { font-size: 0.925rem; margin-top: 30px; }
 
-  .contact-form .form-control, .contact-form .form-select { height: 54px; font-size: 1.0625rem; margin-bottom: 30px; }
+  .contact-form .form-control, .contact-form .form-select { height: 54px; font-size: 1.0625rem; margin-bottom: 24px; }
   .contact-form .form-btn .btn { font-size: 1.05rem; padding: 0.9rem 1.8rem; }
 
   /* FOOTER */
@@ -4864,7 +4864,7 @@
   .contacts-1 .contact-form p { font-size: 1rem; }
   .contacts-1 .contact-form .contact-form-notice p { font-size: 0.935rem; margin-top: 25px; }
 
-  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 26px; }
+  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 24px; }
   .contact-form textarea { min-height: 150px; }
   .contact-form textarea.form-control { padding: 15px; }
   .contact-form .form-btn .btn { font-size: 1.1rem; padding: 0.925rem 1.8rem; }
@@ -5885,7 +5885,7 @@
   .contacts-1 .contact-form p { font-size: 1rem; }
   .contacts-1 .contact-form .contact-form-notice p { font-size: 0.935rem; margin-top: 25px; }
 
-  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 26px; }
+  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 22px; }
   .contact-form textarea { min-height: 150px; }
   .contact-form textarea.form-control { padding: 15px; }
   .contact-form .form-btn .btn { font-size: 1.0625rem; padding: 0.95rem 1.8rem; }
@@ -6923,7 +6923,7 @@
   .contacts-1 .contact-form p { font-size: 1rem; }
   .contacts-1 .contact-form .contact-form-notice p { font-size: 0.975rem; margin-top: 25px; }
 
-  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 26px; }
+  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 22px; }
   .contact-form textarea { min-height: 150px; }
   .contact-form textarea.form-control { padding: 15px; }
   .contact-form .form-btn .btn { font-size: 1.1rem; padding: 0.95rem 1.8rem; }
@@ -8017,7 +8017,7 @@
   .contacts-1 .contact-form p { font-size: 1rem; }
   .contacts-1 .contact-form .contact-form-notice p { font-size: 0.975rem; margin-top: 25px; }
 
-  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 26px;}
+  .contact-form .form-control, .contact-form .form-select { height: 50px; font-size: 1.0625rem; padding: 0 15px;margin-bottom: 22px;}
   .contact-form textarea { min-height: 140px; }
   .contact-form textarea.form-control { padding: 15px; }
   .contact-form .form-btn .btn { font-size: 1.125rem; padding: 0.95rem 1.8rem; }

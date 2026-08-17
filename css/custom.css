@@ -1,0 +1,188 @@
+/* WARM EDUCATION PALETTE OVERRIDE ==========================================
+   Single point of control: the whole template accent is driven by these two
+   CSS variables. Azure = brand (payments), amber = warmth (school). Link this
+   last in <head> so it wins over any theme stylesheet the style-switcher
+   enables. */
+:root {
+	--theme-color: #0099f2;           /* azure — primary brand */
+	--theme-color-secondary: #f59e0b;  /* amber — warm, school / stationery */
+}
+/* soft warm tint for section-id eyebrow labels */
+.section-id { color: var(--theme-color); }
+/* placeholder markers kept visually honest, not hidden */
+.pending-figure { color: var(--theme-color-secondary); font-weight: 600; }
+.placeholder-note { display:inline-block; font-size:.72rem; letter-spacing:.02em; text-transform:uppercase;
+	color: var(--theme-color-secondary); border:1px dashed var(--theme-color-secondary);
+	border-radius:6px; padding:2px 8px; margin-top:8px; }
+
+/* Stats band — designed placeholder while verified figures are pending */
+.stat-card { height:100%; text-align:center; padding:38px 24px; border-radius:16px;
+	background:#f7f9fc; border:1px solid #eef1f7; transition:transform .25s ease, box-shadow .25s ease; }
+.stat-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(16,26,47,.28); }
+.stat-ico { width:60px; height:60px; margin:0 auto 22px; border-radius:50%;
+	display:flex; align-items:center; justify-content:center; font-size:24px;
+	color:var(--theme-color); background:rgba(0,153,242,.10); }
+.stat-skeleton { width:72px; height:16px; margin:0 auto 16px; border-radius:8px;
+	background:linear-gradient(90deg,#e7ecf3 0%,#f2f5fa 50%,#e7ecf3 100%);
+	background-size:200% 100%; animation:statShimmer 1.6s ease-in-out infinite; }
+@keyframes statShimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+@media (prefers-reduced-motion: reduce){ .stat-skeleton{ animation:none } }
+.stat-label { margin:0; font-weight:600; font-size:1.05rem; color:#353f4f; }
+.stat-pending { display:block; margin-top:8px; font-size:.68rem; letter-spacing:.06em;
+	text-transform:uppercase; color:#9aa1b1; }
+
+/* Use Cases cards — built on the theme's tinted-card + blob-icon language */
+.uc-card { position:relative; height:100%; display:flex; flex-direction:column;
+	padding:34px 30px 0; background:#fff; border:1px solid #e9eef6; border-radius:20px;
+	box-shadow:0 12px 30px -22px rgba(16,26,47,.30); overflow:hidden;
+	transition:transform .3s var(--ease,ease), box-shadow .3s var(--ease,ease), border-color .3s var(--ease,ease); }
+.uc-card::before { content:""; position:absolute; top:0; left:0; right:0; height:3px;
+	background:linear-gradient(90deg,#0099f2,#39b7cb); opacity:0; transition:opacity .3s var(--ease,ease); }
+.uc-card:hover { transform:translateY(-8px); border-color:rgba(0,153,242,.35);
+	box-shadow:0 30px 54px -26px rgba(0,153,242,.45); }
+.uc-card:hover::before { opacity:1; }
+.uc-head { display:flex; align-items:flex-start; gap:15px; margin-bottom:24px; }
+.uc-head .fbox-ico { flex-shrink:0; margin:0; }
+.uc-head h5 { margin:0; font-size:1.08rem; line-height:1.38; text-wrap:balance;
+	min-height:2.76em; display:flex; align-items:center; }
+.uc-body { flex:1 1 auto; }
+.uc-row + .uc-row { margin-top:18px; }
+.uc-row p { margin:0; font-size:.92rem; line-height:1.62; color:#6a7382; }
+.uc-label { display:block; font-size:.66rem; font-weight:700; letter-spacing:.1em;
+	text-transform:uppercase; margin-bottom:5px; }
+.uc-label.is-problem { color:#9aa4b4; }
+.uc-label.is-help { color:var(--theme-color); }
+.uc-outcome { display:flex; align-items:flex-start; gap:11px; margin:26px -30px 0;
+	padding:18px 30px; background:linear-gradient(180deg,#f7fbff,#f2f8fe);
+	border-top:1px solid #e9eef6; }
+.uc-outcome .flaticon-check { color:var(--theme-color-secondary); font-size:14px; margin-top:3px; flex-shrink:0; }
+.uc-outcome p { margin:0; font-weight:600; font-size:.9rem; line-height:1.55; color:#353f4f; }
+
+/* How It Works — theme-matched step flow: real blob icons (same
+   fbox-ico/shape-ico pattern as Features/Use Cases/Technology),
+   a small step-order tag, and a clean connector between them. */
+#how-it-works { background:linear-gradient(180deg,#f5faff 0%,#fbfdff 42%,#fff 100%); }
+.hiw-flow { position:relative; }
+.hiw-flow > [class*="col"] { display:flex; }
+.hiw-step { position:relative; z-index:1; display:flex; width:100%; }
+.hiw-card { position:relative; width:100%; padding:36px 22px 30px; text-align:center;
+	display:flex; flex-direction:column; align-items:center;
+	background:#fff; border:1px solid #e9eef6; border-radius:20px;
+	box-shadow:0 12px 30px -22px rgba(16,26,47,.30);
+	transition:transform .3s var(--ease,ease), box-shadow .3s var(--ease,ease), border-color .3s var(--ease,ease); }
+.hiw-card::before { content:""; position:absolute; top:0; left:18%; right:18%; height:3px;
+	border-radius:0 0 3px 3px; background:linear-gradient(90deg,#0099f2,#39b7cb);
+	opacity:0; transition:opacity .3s var(--ease,ease); }
+.hiw-card:hover { transform:translateY(-8px); border-color:rgba(0,153,242,.35);
+	box-shadow:0 30px 54px -26px rgba(0,153,242,.45); }
+.hiw-card:hover::before { opacity:1; }
+.hiw-card .fbox-ico { position:relative; margin-bottom:20px; }
+.hiw-tag { position:absolute; top:14px; right:14px; width:26px; height:26px; border-radius:50%;
+	display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:700;
+	color:var(--theme-color); background:rgba(0,153,242,.10); }
+.hiw-step-label { display:block; font-size:.62rem; font-weight:700; letter-spacing:.15em;
+	text-transform:uppercase; color:var(--theme-color-secondary); margin-bottom:8px; }
+.hiw-card h6 { margin-bottom:10px; font-size:1.02rem; line-height:1.35; text-wrap:balance; min-height:2.7em;
+	display:flex; align-items:center; }
+.hiw-card p { font-size:.9rem; line-height:1.62; margin:0; color:#6a7382; }
+@media (min-width:992px){
+	.hiw-flow::before { content:""; position:absolute; top:66px; left:11%; right:11%; height:2px; z-index:0;
+		background:linear-gradient(90deg, rgba(0,153,242,.05), rgba(0,153,242,.4) 8%, rgba(0,153,242,.4) 92%, rgba(0,153,242,.05)); }
+	.hiw-card { padding-top:40px; }
+}
+
+/* Technology & Security */
+.tech-panel { background:linear-gradient(160deg,#f3f9ff 0%,#fbfdff 60%,#fff 100%);
+	border:1px solid #eef3fa; border-radius:28px; padding:64px 28px; }
+/* Complete Solution band — theme only ships purple/indigo tints, so use an azure one */
+.cs-wrapper { background:linear-gradient(160deg,#eaf5fe 0%,#f2f9ff 60%,#f7fbff 100%); padding:70px 30px; }
+/* equal-height cards: stretch the row and let text push to a shared baseline */
+.cs-wrapper .row.d-flex { align-items:stretch!important; }
+.cs-wrapper .row > [class*="col"] { display:flex; }
+.cs-wrapper .fbox-5 { width:100%; display:flex; flex-direction:column; }
+.cs-wrapper .fbox-5 .fbox-txt { margin-top:auto; }
+.cs-wrapper .fbox-5 .fbox-txt h5 { text-wrap:balance; }
+
+/* Key features ("Everything in One Place") — tinted band, roomier grid */
+#key-features { background:linear-gradient(180deg,#fff 0%,#f5faff 18%,#f5faff 82%,#fff 100%); }
+#key-features .section-title { margin-bottom:70px!important; }
+.kf-grid { --kf-gap:48px; row-gap:var(--kf-gap); column-gap:0; }
+.kf-grid > [class*="col"] { padding-left:20px; padding-right:20px; }
+.kf-grid .fbox-2 { padding-right:16px; }
+.kf-grid .fbox-txt h5 { margin-bottom:9px; }
+.kf-grid .fbox-txt > p { margin-bottom:0; }
+@media (min-width:992px){ .kf-grid { --kf-gap:60px; } .kf-grid > [class*="col"] { padding-left:28px; padding-right:28px; } }
+
+/* 7 stack layers in a single row on desktop; wraps down on smaller screens */
+.tech-grid { display:grid; gap:16px; grid-template-columns:repeat(2,1fr); }
+.tech-grid > .col { display:flex; width:100%; max-width:none; padding:0; }
+@media (min-width:768px){ .tech-grid { grid-template-columns:repeat(4,1fr); } }
+@media (min-width:1200px){
+	.tech-grid { grid-template-columns:repeat(7,1fr); gap:12px; }
+	.tech-grid .tech-card { padding:26px 10px; }
+	.tech-grid .tech-name { font-size:.84rem; line-height:1.45; }
+	.tech-grid .tech-layer { font-size:.6rem; letter-spacing:.07em; }
+	.tech-grid .tech-logo-wrap { height:44px; margin-bottom:14px; }
+	.tech-grid .tech-logo-wrap img { max-width:88px; }
+}
+.tech-card { height:100%; width:100%; text-align:center; padding:30px 16px; background:#fff; border:1px solid #eef1f7;
+	border-radius:16px; box-shadow:0 10px 26px -20px rgba(16,26,47,.28);
+	transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.tech-card:hover { transform:translateY(-6px); border-color:rgba(0,153,242,.3);
+	box-shadow:0 22px 40px -22px rgba(0,153,242,.35); }
+.tech-card .fbox-ico { margin:0 auto 16px; }
+.tech-logo-wrap { height:52px; margin:0 auto 18px; display:flex; align-items:center; justify-content:center; }
+.tech-logo-wrap img { max-height:100%; max-width:120px; width:auto; object-fit:contain; }
+
+/* Brand / payment-method logo carousel — uniform visual height regardless of source aspect ratio */
+.brand-logo { display:flex!important; align-items:center; justify-content:center; height:88px; }
+.brand-logo a { display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
+.brand-logo img { height:56px; width:auto; max-width:150px; object-fit:contain; }
+.tech-layer { display:block; font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+	color:var(--theme-color-secondary); margin-bottom:6px; }
+.tech-name { margin:0; font-weight:600; color:#353f4f; font-size:.95rem; }
+.tech-security-line { display:flex; align-items:center; justify-content:center; gap:10px;
+	margin-top:48px; padding-top:32px; border-top:1px solid rgba(16,26,47,.08); text-align:center; }
+.tech-security-line .flaticon-shield { font-size:20px; }
+.tech-security-line p { margin:0; font-weight:600; color:#4a5568; }
+
+/* Closing CTA banner background */
+.footer-cta-bg { background-image:url(../images/footer-banner.png); background-size:cover; background-position:center; }
+
+/* Hero wash — theme ships this as a pale purple gradient (#e9e0f2);
+   swap it for the same soft weight in our azure primary instead. */
+#hero-11 { background-image: linear-gradient(180deg, rgba(216,238,253,.8) 50%, rgba(216,238,253,.05) 100%); }
+
+/* Header used a 1140px wrapper while the page body uses Bootstrap's 1320px
+   container, so the logo sat ~90px inside the content edge. Match them. */
+@media (min-width:1200px){
+	.wsmainwp { max-width:1320px!important;
+		padding-left:calc(var(--bs-gutter-x,1.5rem) * .5)!important;
+		padding-right:calc(var(--bs-gutter-x,1.5rem) * .5)!important; }
+}
+
+/* Theme ships hr.divider with margin:0 — give it breathing room */
+hr.divider { margin-top:64px; }
+
+/* Dial the theme's blob icons down across the page (blobs scaled to match) */
+.ico-50 [class*="flaticon-"]:before,
+.ico-50 [class*="flaticon-"]:after { font-size:2rem; }
+.ico-55 [class*="flaticon-"]:before,
+.ico-55 [class*="flaticon-"]:after { font-size:2.1rem; }
+.ico-60 [class*="flaticon-"]:before,
+.ico-60 [class*="flaticon-"]:after { font-size:2.25rem; }
+.ico-55 .shape-ico svg { width:78px; height:78px; top:-26px; left:calc(50% - 41px); }
+.ico-60 .shape-ico svg { width:84px; height:84px; top:-29px; left:calc(50% - 45px); }
+.fbox-ico-wrap { margin-right:20px!important; }
+
+/* Fix theme's float-based footer-copyright-logo — it assumes one short
+   inline line of text; ours wraps to two paragraphs, so lay it out as a
+   proper flex row instead of relying on float+inline-block. */
+.footer-copyright-fix { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.footer-copyright-fix .footer-copyright-logo { float:none; top:0; display:flex; }
+.footer-copyright-fix .footer-copyright-text p.p-sm { display:block; margin:0; line-height:1.5; }
+.footer-copyright-fix .footer-copyright-text p.p-sm + p.p-sm { margin-top:2px; }
+
+/* Request Demo form (contacts.html) — group labels between field clusters */
+.form-group-label { display:block; font-size:.72rem; font-weight:700; letter-spacing:.08em;
+	text-transform:uppercase; color:var(--theme-color); margin:22px 0 10px; }
