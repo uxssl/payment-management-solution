@@ -13,12 +13,12 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="author" content="Jthemes">	
-		<meta name="description" content="  - Mobile App & Software Landing Page Template">
-		<meta name="keywords" content="Responsive, HTML5 template, Jthemes, Mobile, Application, Software, One Page, Landing, Digital Product, Mobile App">	
+		<meta name="description" content="Contact Education Payments or request a demo — see how digital fee collection can fit your institution's existing workflow.">
+		<meta name="keywords" content="school fee collection, education payments, digital payments Bangladesh, SSLCOMMERZ, fee management, student payments, request a demo">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- SITE TITLE -->
-		<title>  - Mobile App & Software Landing Page Template</title>
+		<title>Contact Us — Education Payments</title>
 
 		<!-- FAVICON AND TOUCH ICONS -->
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -194,13 +194,13 @@
 
 
 						<!-- CONTACTS INFO -->
-						<div class="col-md-6">
+						<div class="col-md-6 col-lg-5">
 							<div class="contacts-info">
 
-								<!-- Section ID -->	
+								<!-- Section ID -->
 						 		<span class="section-id">Contact Us</span>
 
-								<!-- Title -->		
+								<!-- Title -->
 								<h2 class="h2-lg">Have Questions? Get in Touch</h2>
 
 								<!-- Text -->
@@ -208,29 +208,77 @@
 									or speak with our team? Let us know what you're looking for and we'll get back to you right away.
 								</p>
 
-								<!-- Button -->
-								<a href="index.html#faqs" class="btn r-36 btn-md btn--theme hover--tra-black">Read the FAQs</a>
+								<!-- What to Expect -->
+								<div class="contacts-expect">
+									<div class="ce-item">
+										<span class="ce-ico"><span class="flaticon-check"></span></span>
+										<p>We'll respond to your request promptly.</p>
+									</div>
+									<div class="ce-item">
+										<span class="ce-ico"><span class="flaticon-check"></span></span>
+										<p>Your information is handled securely.</p>
+									</div>
+									<div class="ce-item">
+										<span class="ce-ico"><span class="flaticon-check"></span></span>
+										<p>Dedicated support during onboarding.</p>
+									</div>
+								</div>
+
+								<!-- Direct Contact Channels -->
+								<div class="contacts-channels">
+									<a class="cc-item" href="mailto:support@sslcommerz.com">
+										<span class="cc-ico"><span class="flaticon-email"></span></span>
+										<span class="cc-txt">
+											<span class="cc-label">Email us</span>
+											<span class="cc-value">support@sslcommerz.com</span>
+										</span>
+									</a>
+									<a class="cc-item" href="tel:+8809677726222">
+										<span class="cc-ico"><span class="flaticon-phone-call"></span></span>
+										<span class="cc-txt">
+											<span class="cc-label">Call us</span>
+											<span class="cc-value">+88 09677726222</span>
+										</span>
+									</a>
+								</div>
+
+								<!-- FAQ Link -->
+								<a href="index.html#faqs" class="contacts-faq-link">
+									Read the FAQs <span class="flaticon-right-arrow"></span>
+								</a>
 
 							</div>
 						</div>	<!-- END CONTACTS INFO -->
 
 
 						<!-- CONTACT FORM -->
-						<div class="col-md-6">
+						<div class="col-md-6 col-lg-7">
 				 			<div class="form-holder">
+
+								<!-- Form Header -->
+								<div class="form-head">
+									<h4 class="h4-xs">Request a Demo</h4>
+									<p class="p-sm">Share a few details about your institution and our team will
+										get in touch to arrange a walkthrough. Fields marked <span class="req">*</span> are required.
+									</p>
+								</div>
+
 								<form name="contactform" class="row contact-form">
 
-									<!-- Institution -->
-								 
-									<div class="col-md-12">
-										<p>Institution Name: </p>
-										<input type="text" name="organization" class="form-control organization" placeholder="Organization Name*">
+									<!-- INSTITUTION -->
+									<div class="col-12">
+										<span class="form-group-label">Institution</span>
 									</div>
 
-									<div class="col-md-12">
-										<p>Institution Type: </p>
-										<select class="form-select institution-type" name="institutionType" aria-label="Institution Type">
-									    	<option selected disabled value="">Institution Type*</option>
+									<div class="col-12">
+										<label class="form-label" for="cf-organization">Institution name <span class="req">*</span></label>
+										<input type="text" id="cf-organization" name="organization" class="form-control organization" placeholder="e.g. Dhaka Model College">
+									</div>
+
+									<div class="col-md-6">
+										<label class="form-label" for="cf-institution-type">Institution type <span class="req">*</span></label>
+										<select id="cf-institution-type" class="form-select institution-type" name="institutionType">
+									    	<option selected disabled value="">Select type</option>
 											<option>School</option>
 											<option>College</option>
 											<option>University</option>
@@ -239,55 +287,63 @@
 									    </select>
 									</div>
 
-									<div class="col-md-12">
-										<p>Student Count (optional): </p>
-										<input type="number" min="0" name="studentCount" class="form-control student-count" placeholder="Approximate number of students">
+									<div class="col-md-6">
+										<label class="form-label" for="cf-student-count">Student count <span class="opt">optional</span></label>
+										<input type="number" min="0" id="cf-student-count" name="studentCount" class="form-control student-count" placeholder="Approximate number">
 									</div>
 
-									<!-- Contact Information -->
-								 
-
-									<div class="col-md-12">
-										<p>Contact Person: </p>
-										<input type="text" name="contactPerson" class="form-control contact-person" placeholder="Contact Person*">
+									<!-- CONTACT PERSON -->
+									<div class="col-12">
+										<span class="form-group-label">Contact person</span>
 									</div>
 
-									<div class="col-md-12">
-										<p>Mobile Number: </p>
-										<input type="tel" name="mobile" class="form-control mobile" placeholder="Mobile Number*" pattern="^[0-9+\-\s()]{7,15}$">
+									<div class="col-md-6">
+										<label class="form-label" for="cf-contact-person">Full name <span class="req">*</span></label>
+										<input type="text" id="cf-contact-person" name="contactPerson" class="form-control contact-person" placeholder="Your name">
 									</div>
 
-									<div class="col-md-12">
-										<p>Email Address: </p>
-										<input type="email" name="email" class="form-control email" placeholder="Email Address*">
+									<div class="col-md-6">
+										<label class="form-label" for="cf-designation">Designation <span class="opt">optional</span></label>
+										<input type="text" id="cf-designation" name="designation" class="form-control designation" placeholder="e.g. Principal, Accountant">
 									</div>
 
-									<div class="col-md-12">
-										<p>Designation (optional): </p>
-										<input type="text" name="designation" class="form-control designation" placeholder="e.g. Principal, Accountant">
+									<div class="col-md-6">
+										<label class="form-label" for="cf-mobile">Mobile number <span class="req">*</span></label>
+										<input type="tel" id="cf-mobile" name="mobile" class="form-control mobile" placeholder="01XXXXXXXXX" pattern="^[0-9+\-\s()]{7,15}$">
 									</div>
 
-									<!-- Additional Information -->
-								 
+									<div class="col-md-6">
+										<label class="form-label" for="cf-email">Email address <span class="req">*</span></label>
+										<input type="email" id="cf-email" name="email" class="form-control email" placeholder="name@institution.edu.bd">
+									</div>
 
-									<div class="col-md-12">
-										<p>Comments (optional): </p>
-										<textarea class="form-control message" name="message" rows="4" placeholder="Anything else we should know?"></textarea>
+									<!-- ADDITIONAL INFORMATION -->
+									<div class="col-12">
+										<span class="form-group-label">Anything else</span>
+									</div>
+
+									<div class="col-12">
+										<label class="form-label" for="cf-message">Comments <span class="opt">optional</span></label>
+										<textarea id="cf-message" class="form-control message" name="message" rows="4" placeholder="Tell us what you'd like to see in the demo, or anything else we should know."></textarea>
 									</div>
 
 									<!-- Contact Form Button -->
-									<div class="col-md-12 mt-15 form-btn text-right">
+									<div class="col-12 form-btn">
 										<button type="submit" class="btn r-36 btn--theme hover--black submit">Request a Demo</button>
+										<p class="form-privacy-note">
+											<span class="flaticon-padlock"></span>
+											<span>We use your details only to respond to this request. See our <a href="privacy.html">Privacy Policy</a>.</span>
+										</p>
 									</div>
 
 
 									<!-- Contact Form Message -->
-									<div class="col-lg-12 contact-form-msg">
+									<div class="col-12 contact-form-msg">
 										<span class="loading"></span>
 									</div>
 
 								</form>
-				 			</div>	
+				 			</div>
 				 		</div>	<!-- END CONTACT FORM -->		
 
 				 		
@@ -349,7 +405,6 @@
 						     	<ul class="foo-links clearfix">
 						     	 	<li><p><a href="contacts.html">About SSLWIRELESS</a></p></li>
 						     	 	<li><p><a href="index.html#payments">SSLCOMMERZ Gateway</a></p></li>
-						     	 	<li><p><a href="contacts.html">Contact</a></p></li>
 						     	 	<li><p><a href="contacts.html">Request a Demo</a></p></li>
 								</ul>
 							</div>
@@ -363,14 +418,8 @@
 						        <h6 class="m-title">Resources</h6>
 						     	<ul class="foo-links clearfix">
 								<li><p><a href="index.html#faqs">FAQ</a></p></li>
-								<li><p><a href="index.html#stakeholders">For Schools</a></p></li>
-								<li><p><a href="index.html#stakeholders">For Guardians</a></p></li>
-							</ul>
-							<!-- ⚠️ PLACEHOLDER contact — use the official support line only, never a personal number. -->
-							<ul class="foo-links clearfix">
-								<li><p><a href="mailto:[SUPPORT_EMAIL]">[SUPPORT_EMAIL]</a></p></li>
-								<li><p>[SUPPORT_PHONE]</p></li>
-								<li><p>Dhaka, Bangladesh</p></li>
+								<li><p><a href="privacy.html">Privacy Policy</a></p></li>
+								<li><p><a href="terms.html">Terms of Service</a></p></li>
 							</ul>
 						</div>
 					 	</div>	<!-- END FOOTER LINKS — RESOURCES -->
@@ -393,7 +442,6 @@
 									 
 									<div class="footer-copyright-text">
 										<p class="p-sm">&copy; 2026 Education Payments. <span> A SSLWIRELESS product. All Rights Reserved.</span></p>
-										<p class="p-sm"><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
 									</div>
 								</div>
 							</div>

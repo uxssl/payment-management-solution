@@ -5,7 +5,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = '/Users/sslux/Documents/payment-management-solution/SPC HTML';
+/* Resolve from this file's own location so the server keeps working if the kit
+   is moved or renamed (the old hardcoded absolute path had gone stale). */
+const ROOT = __dirname;
 const PORT = 8791;
 
 const TYPES = {
