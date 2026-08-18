@@ -81,10 +81,14 @@ html { font-size: 15px; }
       slack, with a reserved height on the problem band and a two-line reserve
       on the outcome text. */
 
+/* Row-to-row gap: the grid carried 24px horizontal gutters but 0 vertical, so
+   the two card rows touched. Add a matching vertical gutter. */
+.uc-grid { --bs-gutter-y: 1.75rem; }
+
 .uc-card { position:relative; height:100%; display:grid;
 	grid-template-rows:auto auto 1fr auto;   /* head / problem / help(absorbs slack) / outcome */
-	background:#fff; border:1px solid #e4eaf3; border-radius:18px;
-	box-shadow:0 12px 30px -22px rgba(16,26,47,.30); overflow:hidden;
+	background:#fff; border:1px solid #e8edf5; border-radius:20px;
+	box-shadow:0 16px 40px -26px rgba(16,26,47,.26); overflow:hidden;
 	transition:transform .3s var(--ease,ease), box-shadow .3s var(--ease,ease), border-color .3s var(--ease,ease); }
 /* hairline accent that resolves on hover */
 .uc-card::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; z-index:2;
@@ -95,13 +99,21 @@ html { font-size: 15px; }
 .uc-card:hover::before { opacity:1; }
 
 /* --- head ------------------------------------------------------------- */
-.uc-head { display:flex; align-items:center; gap:13px; padding:26px 24px 20px; }
-.uc-head .fbox-ico { flex-shrink:0; margin:0; }
-.uc-head h5 { margin:0; font-size:1.04rem; line-height:1.32; text-wrap:balance;
-	min-height:2.64em; display:flex; align-items:center; }
+.uc-head { display:flex; align-items:center; gap:12px; padding:14px; }
+/* Icon sits in a soft amber chip so it reads as an intentional, weighted mark
+   that balances the title — rather than a small glyph floating beside it. The
+   theme's decorative blob is dropped inside the chip (the chip is the shape). */
+.uc-head .fbox-ico { flex-shrink:0; margin:0; border-radius:15px;
+	display:flex; align-items:center; justify-content:center;
+	 }
+.uc-head .fbox-ico .shape-ico { display:flex; line-height:1; }
+.uc-head .fbox-ico .shape-ico svg { display:none; }
+.uc-head .fbox-ico .shape-ico span { position:static; }
+.uc-head h5 { margin:0; font-size:1.06rem; line-height:1.3; text-wrap:balance;
+	min-height:2.6em; display:flex; align-items:center; }
 
 /* --- tiers ------------------------------------------------------------ */
-.uc-tier { padding:15px 24px 17px; border-top:1px solid #eef2f8; }
+.uc-tier { padding:17px 26px 19px; border-top:1px solid #eef2f8; }
 .uc-tier p { margin:0; font-size:.89rem; line-height:1.58; }
 
 /* label carries its own marker, so the two can never fall out of alignment */
@@ -140,18 +152,18 @@ html { font-size: 15px; }
 /* The reserve must EXCEED the tallest real problem band, or two-line cards
    overflow it and the help band below starts at a different y. Measured at
    each breakpoint against the longest problem line, then rounded up. */
-.uc-tier.is-problem { min-height:var(--uc-problem-h,100px); }
+/* Longest problem band measures 102px at every multi-column width, so one
+   reserve (with a small buffer) aligns all bands; no per-breakpoint tuning. */
+.uc-tier.is-problem { min-height:var(--uc-problem-h,106px); }
 .uc-tier.is-outcome p { min-height:2.9em; }
 
-@media (max-width:1199px){ .uc-card { --uc-problem-h:122px; } }
-@media (max-width:991px) { .uc-card { --uc-problem-h:100px; } }
 /* Single column: nothing sits beside anything, so reserving height would only
    create dead whitespace. Let each card size to its own copy. */
 @media (max-width:767px){
 	.uc-tier.is-problem { min-height:0; }
 	.uc-tier.is-outcome p { min-height:0; }
 }
-@media (max-width:575px){ .uc-head { padding:22px 18px 16px; } .uc-tier { padding:14px 18px 16px; } }
+@media (max-width:575px){ .uc-head { padding:14px } .uc-tier { padding:15px 20px 17px; } }
 
 /* How It Works — theme-matched step flow: real blob icons (same
    fbox-ico/shape-ico pattern as Features/Use Cases/Technology),
@@ -166,7 +178,7 @@ html { font-size: 15px; }
 	box-shadow:0 12px 30px -22px rgba(16,26,47,.30);
 	transition:transform .3s var(--ease,ease), box-shadow .3s var(--ease,ease), border-color .3s var(--ease,ease); }
 .hiw-card::before { content:""; position:absolute; top:0; left:18%; right:18%; height:3px;
-	border-radius:0 0 3px 3px; background:linear-gradient(90deg,#0099f2,#39b7cb);
+	border-radius:0 0 3px 3px;
 	opacity:0; transition:opacity .3s var(--ease,ease); }
 .hiw-card:hover { transform:translateY(-8px); border-color:rgba(0,153,242,.35);
 	box-shadow:0 30px 54px -26px rgba(0,153,242,.45); }
@@ -182,13 +194,13 @@ html { font-size: 15px; }
 .hiw-card p { font-size:.9rem; line-height:1.62; margin:0; color:#6a7382; }
 @media (min-width:992px){
 	.hiw-flow::before { content:""; position:absolute; top:66px; left:11%; right:11%; height:2px; z-index:0;
-		background:linear-gradient(90deg, rgba(0,153,242,.05), rgba(0,153,242,.4) 8%, rgba(0,153,242,.4) 92%, rgba(0,153,242,.05)); }
+		 }
 	.hiw-card { padding-top:40px; }
 }
 
 /* Technology & Security */
 .tech-panel { background:linear-gradient(160deg,#f3f9ff 0%,#fbfdff 60%,#fff 100%);
-	border:1px solid #eef3fa; border-radius:28px; padding:64px 28px; }
+	border:1px solid #eef3fa; border-radius:28px; padding:32px; }
 /* Complete Solution band — theme only ships purple/indigo tints, so use an azure one */
 .cs-wrapper { background:linear-gradient(160deg,#eaf5fe 0%,#f2f9ff 60%,#f7fbff 100%); padding:70px 30px; }
 /* equal-height cards: stretch the row and let text push to a shared baseline */
@@ -247,7 +259,7 @@ html { font-size: 15px; }
 	color:var(--theme-color-secondary); margin-bottom:6px; }
 .tech-name { margin:0; font-weight:600; color:#353f4f; font-size:.95rem; }
 .tech-security-line { display:flex; align-items:center; justify-content:center; gap:10px;
-	margin-top:48px; padding-top:32px; border-top:1px solid rgba(16,26,47,.08); text-align:center; }
+	margin-top:24px; padding-top:12px;  text-align:center; }
 .tech-security-line .flaticon-shield { font-size:20px; }
 .tech-security-line p { margin:0; font-weight:600; color:#4a5568; }
 
@@ -553,4 +565,52 @@ hr.divider { margin-top:64px; }
 @media (max-width: 575px) {
 	.device-combo .phone-flow { width: 88px; border-width: 5px; border-radius: 18px; }
 	.device-combo .phone-flow .phone-flow-screens { border-radius: 14px; }
+}
+
+/* SMALLER SECTION TITLES ===================================================
+   index / contacts / features / terms / privacy carry `body.sm-titles`. The
+   theme's section headings run large (h2-xl 52px, h2-title 54px …); scale them
+   to ~0.82 so section titles read tighter without touching hero headlines.
+   Hero headlines are exempt: index's hero <h2> has no size class, and the
+   features hero carries `.hero-title` (excluded below). Scaled at the three
+   larger tiers; the theme's already-compact phone sizes (≤767px) are left be.
+   Specificity (0,2,1) beats the theme's element+class rules in every tier. */
+.sm-titles h2.h2-xl    { font-size: 2.665rem; }   /* was 3.25  */
+.sm-titles h2.h2-title { font-size: 2.7675rem; }  /* was 3.375 */
+.sm-titles h2.h2-lg    { font-size: 2.5625rem; }  /* was 3.125 */
+.sm-titles h2.h2-md:not(.hero-title) { font-size: 2.46rem; } /* was 3 */
+
+@media (min-width:992px) and (max-width:1199.95px) {
+	.sm-titles h2.h2-xl    { font-size: 2.46rem; }    /* was 3     */
+	.sm-titles h2.h2-title { font-size: 2.5625rem; }  /* was 3.125 */
+	.sm-titles h2.h2-lg    { font-size: 2.3575rem; }  /* was 2.875 */
+	.sm-titles h2.h2-md:not(.hero-title) { font-size: 2.255rem; } /* was 2.75 */
+}
+/* ≤991px the theme already steps these down through many tiers (34px and
+   below); reducing further risks tablet titles landing smaller than the phone
+   tiers beneath them. Left at theme sizes — the oversized-title concern was on
+   desktop, which the two tiers above handle. */
+
+/* CUSTOMER VALUE CALLOUT (features.html) ===================================
+   Was a flat inline line ("Customer value: …"). Promoted to a soft-tinted
+   benefit callout — a check-marked payoff box that closes each feature block.
+   Azure tint keeps it on-brand; the label is an uppercase eyebrow. */
+.feature-value { display:flex; align-items:flex-start; gap:18px; margin-top:36px;
+	padding:26px 28px; border-radius:18px;
+	background:linear-gradient(180deg,rgba(0,153,242,.09),rgba(0,153,242,.045));
+	border:1px solid rgba(0,153,242,.18);
+	box-shadow:0 18px 44px -30px rgba(0,153,242,.55); }
+.feature-value-ico { flex:0 0 48px; width:48px; height:48px; border-radius:14px;
+	display:flex; align-items:center; justify-content:center;
+	background:var(--theme-color); box-shadow:0 8px 18px -7px rgba(0,153,242,.65); }
+.feature-value-ico [class*="flaticon-"]:before { font-size:20px; color:#fff; margin:0; }
+.feature-value-txt { min-width:0; }
+.feature-value-label { display:block; margin-bottom:6px; font-size:.75rem; font-weight:700;
+	letter-spacing:.12em; text-transform:uppercase; color:#0077bf; }
+.feature-value p { margin:0; font-size:1.1rem; line-height:1.6; color:#333d4e; }
+
+@media (max-width:575px){
+	.feature-value { padding:20px 20px; gap:14px; margin-top:28px; }
+	.feature-value-ico { flex-basis:42px; width:42px; height:42px; }
+	.feature-value p { font-size:1.02rem; }
 }

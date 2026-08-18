@@ -1418,7 +1418,7 @@ p.video-txt-sm {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 32px;   
+  margin-bottom: 24px;   
 }
 
 /*------------------------------------------*/
@@ -3869,7 +3869,7 @@ span.sm-info {
 }
 
 .bc-01 .section-overlay {
-  padding: 80px 65px;
+  padding: 60px 40px;
 }
 
 .bc-02 .section-overlay {
