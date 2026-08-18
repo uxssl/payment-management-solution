@@ -386,12 +386,41 @@ html { font-size: 15px; }
    swap it for the same soft weight in our azure primary instead. */
 #hero-11 { background-image: linear-gradient(180deg, rgba(216,238,253,.8) 50%, rgba(216,238,253,.05) 100%); }
 
-/* Header used a 1140px wrapper while the page body uses Bootstrap's 1320px
-   container, so the logo sat ~90px inside the content edge. Match them. */
-@media (min-width:1200px){
-	.wsmainwp { max-width:1320px!important;
-		padding-left:calc(var(--bs-gutter-x,1.5rem) * .5)!important;
-		padding-right:calc(var(--bs-gutter-x,1.5rem) * .5)!important; }
+/* Features page opens on the same azure wash as the homepage hero. Scoped to
+   this hero rather than .inner-page-hero, which 15 other pages also use. */
+#features-hero { background-image: linear-gradient(180deg, rgba(216,238,253,.8) 50%, rgba(216,238,253,.05) 100%); }
+
+/* Header wrapper was a fixed 1140px box with 15px padding, while the page body
+   uses Bootstrap's .container (stepped max-widths + 12px gutter). That left the
+   logo/menu misaligned with content at every breakpoint. Mirror .container
+   exactly so the header edges track the content edges on all screens. */
+.wsmainwp {
+	padding-left:calc(var(--bs-gutter-x,1.5rem) * .5)!important;
+	padding-right:calc(var(--bs-gutter-x,1.5rem) * .5)!important;
+}
+@media (min-width:576px){ .wsmainwp { max-width:540px!important; } }
+@media (min-width:768px){ .wsmainwp { max-width:720px!important; } }
+@media (min-width:992px){ .wsmainwp { max-width:960px!important; } }
+@media (min-width:1200px){ .wsmainwp { max-width:1140px!important; } }
+@media (min-width:1400px){ .wsmainwp { max-width:1320px!important; } }
+
+/* Mobile header (≤991px): the top bar stays full-bleed, but its logo/hamburger
+   must line up with the content container. Give the bar the container's own
+   responsive side gutters and let the logo (left) and hamburger (right:0) sit on
+   those edges — so they track the container just like the desktop nav does. */
+@media (max-width:991px){
+	.wsmobileheader { padding-left:12px; padding-right:12px; }
+	.wsmobileheader .smllogo { padding-left:0!important; }
+	.wsanimated-arrow { right:0!important; padding-right:0!important; }
+	.wsanimated-arrow span,
+	.wsanimated-arrow span:before,
+	.wsanimated-arrow span:after { left:auto!important; right:0!important; }
+}
+@media (min-width:576px) and (max-width:767px){
+	.wsmobileheader { padding-left:calc((100% - 540px) / 2); padding-right:calc((100% - 540px) / 2); }
+}
+@media (min-width:768px) and (max-width:991px){
+	.wsmobileheader { padding-left:calc((100% - 720px) / 2); padding-right:calc((100% - 720px) / 2); }
 }
 
 /* Theme ships hr.divider with margin:0 — give it breathing room */
@@ -476,4 +505,52 @@ hr.divider { margin-top:64px; }
 
 @media (prefers-reduced-motion: reduce) {
 	.pf-cursor { display: none; }
+}
+
+/* ============================================================
+   Laptop mock — frames the dashboard screenshots (features.html)
+   so every product shot shares one height and reads as a laptop
+   screen, matching the .phone-flow treatment used for app screens.
+   ============================================================ */
+/* Every dashboard sits in a col-lg-7, and the cap matches the narrowest of
+   those (the bc-01 wrapper's, which carries extra padding) so all laptops
+   render at the same width — and therefore the same height. */
+.laptop-mock { position: relative; width: 100%; max-width: 660px;
+	margin: 0 auto; padding: 0 12px 10px; }
+.laptop-screen { border: 8px solid #1e2c47; border-radius: 12px;
+	background: #1e2c47; box-shadow: 0 24px 56px rgba(20,45,90,.18); }
+/* Fixed ratio is what keeps every dashboard shot the same height.
+   2/1 matches the source captures (~2.0–2.1), so the crop is negligible. */
+.laptop-screen-inner { position: relative; aspect-ratio: 2 / 1;
+	border-radius: 4px; overflow: hidden; background: #fff; }
+.lp-screen { position: absolute; inset: 0; width: 100%; height: 100%;
+	object-fit: cover; object-position: top center; }
+/* Base stays in the bezel's navy family so it reads as one device — a touch
+   lighter than the lid so the edge is clearly visible, but thin and inset
+   so it never becomes a heavy black slab. */
+.laptop-mock::after { content: ''; position: absolute; left: 3%; right: 3%; bottom: 0;
+	height: 10px; border-radius: 0 0 9px 9px;
+	background: linear-gradient(180deg, #3b4a66 0%, #222f4a 100%);
+	box-shadow: 0 4px 10px rgba(20,45,90,.16); }
+/* Hinge notch on the base */
+.laptop-mock::before { content: ''; position: absolute; left: 50%; bottom: 3px;
+	transform: translateX(-50%); width: 56px; height: 3px; z-index: 1;
+	background: rgba(255,255,255,.24); border-radius: 2px; }
+
+/* Hero pairs the laptop with a phone so the first section shows both
+   the desktop portal and the mobile app together. */
+.device-combo { position: relative; padding-bottom: 22px; }
+.device-combo .laptop-mock { max-width: 100%; }
+.device-combo .phone-flow { position: absolute; right: 0; bottom: 0;
+	width: 132px; border-width: 7px; border-radius: 26px; z-index: 2;
+	box-shadow: 0 18px 40px rgba(20,45,90,.28); }
+.device-combo .phone-flow .phone-flow-screens { border-radius: 20px; }
+
+@media (max-width: 991px) {
+	.device-combo .phone-flow { width: 112px; border-width: 6px; border-radius: 22px; }
+	.device-combo .phone-flow .phone-flow-screens { border-radius: 17px; }
+}
+@media (max-width: 575px) {
+	.device-combo .phone-flow { width: 88px; border-width: 5px; border-radius: 18px; }
+	.device-combo .phone-flow .phone-flow-screens { border-radius: 14px; }
 }
