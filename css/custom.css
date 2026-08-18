@@ -12,6 +12,26 @@
 html { font-size: 15px; }
 /* soft warm tint for section-id eyebrow labels */
 .section-id { color: var(--theme-color); }
+
+/* HOME PAGE SECTION RHYTHM ================================================
+   index.html stacks ~15 sections at the theme's 100px rhythm, which reads far
+   too airy over a page that long. Drive the whole page's vertical rhythm off
+   one custom property and step it down at the same breakpoints responsive.css
+   uses, so the theme's own ramp is preserved — just tighter. Scoped to
+   body.home so the inner pages keep the theme's default spacing. */
+.home {
+	--sec-pad: 72px;    /* theme default: 100px */
+	--div-gap: 46px;    /* gap above an <hr class="divider"> */
+}
+@media (min-width: 992px) and (max-width: 1199.95px) { .home { --sec-pad: 62px; --div-gap: 40px; } }
+@media (min-width: 768px) and (max-width: 991.98px)  { .home { --sec-pad: 54px; --div-gap: 34px; } }
+@media (max-width: 767px)                            { .home { --sec-pad: 50px; --div-gap: 30px; } }
+@media (max-width: 320.98px)                         { .home { --sec-pad: 44px; --div-gap: 26px; } }
+
+.home .pt-100 { padding-top: var(--sec-pad); }
+.home .pb-100 { padding-bottom: var(--sec-pad); }
+.home .py-100 { padding-top: var(--sec-pad); padding-bottom: var(--sec-pad); }
+.home hr.divider { margin-top: var(--div-gap); }
 /* placeholder markers kept visually honest, not hidden */
 .pending-figure { color: var(--theme-color-secondary); font-weight: 600; }
 .placeholder-note { display:inline-block; font-size:.72rem; letter-spacing:.02em; text-transform:uppercase;
@@ -34,32 +54,104 @@ html { font-size: 15px; }
 .stat-pending { display:block; margin-top:8px; font-size:.68rem; letter-spacing:.06em;
 	text-transform:uppercase; color:#9aa1b1; }
 
-/* Use Cases cards — built on the theme's tinted-card + blob-icon language */
-.uc-card { position:relative; height:100%; display:flex; flex-direction:column;
-	padding:34px 30px 0; background:#fff; border:1px solid #e9eef6; border-radius:20px;
+/* USE CASES — THREE-TIER CARD ==============================================
+   Each card carries three tiers: PROBLEM (today's pain) -> HOW IT HELPS (what
+   the platform does) -> OUTCOME (the result). The original card rendered only
+   the middle tier plus a line beginning with the literal word "Outcome:", so
+   all three read as one undifferentiated grey block.
+
+   Three devices make the tiers glanceable:
+
+   1. BANDS, not just labels. Each tier is a full-bleed horizontal band with its
+      own fill, so the card's structure is legible as blocks before a single
+      word is read — the strongest pre-attentive cue available here. The fills
+      also carry the narrative: neutral grey (today, inert) -> white (the
+      product acting) -> azure tint (the result, on-brand).
+
+   2. STATE MARKERS that encode by SHAPE as well as hue, so the tiers stay
+      distinguishable in greyscale and for colour-blind users: hollow ring
+      (unresolved) -> filled disc (acting) -> disc with a check (resolved).
+      Markers are inline inside their own label, so they can never drift out of
+      alignment with the text they belong to.
+
+   3. CROSS-CARD ALIGNMENT. Comparing six cards at a glance needs tier
+      boundaries on the same y BETWEEN cards, so the eye can read across a row
+      (all six problems) as well as down a card. Copy lengths differ, so flex
+      alone will not do it: the card is a grid whose help band absorbs the
+      slack, with a reserved height on the problem band and a two-line reserve
+      on the outcome text. */
+
+.uc-card { position:relative; height:100%; display:grid;
+	grid-template-rows:auto auto 1fr auto;   /* head / problem / help(absorbs slack) / outcome */
+	background:#fff; border:1px solid #e4eaf3; border-radius:18px;
 	box-shadow:0 12px 30px -22px rgba(16,26,47,.30); overflow:hidden;
 	transition:transform .3s var(--ease,ease), box-shadow .3s var(--ease,ease), border-color .3s var(--ease,ease); }
-.uc-card::before { content:""; position:absolute; top:0; left:0; right:0; height:3px;
-	background:linear-gradient(90deg,#0099f2,#39b7cb); opacity:0; transition:opacity .3s var(--ease,ease); }
+/* hairline accent that resolves on hover */
+.uc-card::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; z-index:2;
+	background:linear-gradient(90deg,var(--theme-color),#39b7cb);
+	opacity:0; transition:opacity .3s var(--ease,ease); }
 .uc-card:hover { transform:translateY(-8px); border-color:rgba(0,153,242,.35);
 	box-shadow:0 30px 54px -26px rgba(0,153,242,.45); }
 .uc-card:hover::before { opacity:1; }
-.uc-head { display:flex; align-items:flex-start; gap:15px; margin-bottom:24px; }
+
+/* --- head ------------------------------------------------------------- */
+.uc-head { display:flex; align-items:center; gap:13px; padding:26px 24px 20px; }
 .uc-head .fbox-ico { flex-shrink:0; margin:0; }
-.uc-head h5 { margin:0; font-size:1.08rem; line-height:1.38; text-wrap:balance;
-	min-height:2.76em; display:flex; align-items:center; }
-.uc-body { flex:1 1 auto; }
-.uc-row + .uc-row { margin-top:18px; }
-.uc-row p { margin:0; font-size:.92rem; line-height:1.62; color:#6a7382; }
-.uc-label { display:block; font-size:.66rem; font-weight:700; letter-spacing:.1em;
-	text-transform:uppercase; margin-bottom:5px; }
-.uc-label.is-problem { color:#9aa4b4; }
-.uc-label.is-help { color:var(--theme-color); }
-.uc-outcome { display:flex; align-items:flex-start; gap:11px; margin:26px -30px 0;
-	padding:18px 30px; background:linear-gradient(180deg,#f7fbff,#f2f8fe);
-	border-top:1px solid #e9eef6; }
-.uc-outcome .flaticon-check { color:var(--theme-color-secondary); font-size:14px; margin-top:3px; flex-shrink:0; }
-.uc-outcome p { margin:0; font-weight:600; font-size:.9rem; line-height:1.55; color:#353f4f; }
+.uc-head h5 { margin:0; font-size:1.04rem; line-height:1.32; text-wrap:balance;
+	min-height:2.64em; display:flex; align-items:center; }
+
+/* --- tiers ------------------------------------------------------------ */
+.uc-tier { padding:15px 24px 17px; border-top:1px solid #eef2f8; }
+.uc-tier p { margin:0; font-size:.89rem; line-height:1.58; }
+
+/* label carries its own marker, so the two can never fall out of alignment */
+.uc-label { display:flex; align-items:center; gap:8px; margin-bottom:7px;
+	font-size:.63rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase; }
+.uc-dot { position:relative; flex:0 0 14px; width:14px; height:14px; border-radius:50%; }
+
+/* PROBLEM — inert. Hollow ring, neutral fill, muted (but AA-compliant) text. */
+.uc-tier.is-problem { background:#f7f9fb; }
+.uc-tier.is-problem .uc-dot { border:1.5px solid #b3bdca; background:#fff; }
+.uc-tier.is-problem .uc-label { color:#6b7280; }   /* 4.8:1 on #f7f9fb */
+.uc-tier.is-problem p { color:#697280; }           /* 4.6:1 on #f7f9fb */
+
+/* HELP — the product acting. Filled azure disc on clean white. */
+.uc-tier.is-help { background:#fff; }
+.uc-tier.is-help .uc-dot { background:var(--theme-color); box-shadow:0 0 0 3px rgba(0,153,242,.14); }
+.uc-tier.is-help .uc-label { color:#0077bf; }      /* 4.8:1 — brand #0099f2 is only 3.1:1 */
+.uc-tier.is-help p { color:#48546a; }
+
+/* OUTCOME — resolved. Amber disc with a pure-CSS check (no icon-font
+   dependency), on the brand tint. Label is slate rather than amber: amber dark
+   enough to pass AA on this tint goes olive and reads like a warning. */
+.uc-tier.is-outcome { background:linear-gradient(180deg,#f4faff,#eaf4fd);
+	border-top-color:#dceaf8; }
+.uc-tier.is-outcome .uc-dot { background:var(--theme-color-secondary); }
+.uc-tier.is-outcome .uc-dot::after { content:""; position:absolute; left:4.5px; top:2px;
+	width:3px; height:6.5px; border:solid #fff; border-width:0 1.6px 1.6px 0;
+	transform:rotate(45deg); }
+.uc-tier.is-outcome .uc-label { color:#455267; }
+.uc-tier.is-outcome p { font-weight:600; color:#232c39; }
+
+/* --- cross-card alignment --------------------------------------------- */
+/* Problem band gets a reserved height; the help band is the grid's 1fr track
+   so it absorbs every card's slack; the outcome text reserves two lines. Net
+   effect: all three band boundaries land on the same y in all six cards. */
+/* The reserve must EXCEED the tallest real problem band, or two-line cards
+   overflow it and the help band below starts at a different y. Measured at
+   each breakpoint against the longest problem line, then rounded up. */
+.uc-tier.is-problem { min-height:var(--uc-problem-h,100px); }
+.uc-tier.is-outcome p { min-height:2.9em; }
+
+@media (max-width:1199px){ .uc-card { --uc-problem-h:122px; } }
+@media (max-width:991px) { .uc-card { --uc-problem-h:100px; } }
+/* Single column: nothing sits beside anything, so reserving height would only
+   create dead whitespace. Let each card size to its own copy. */
+@media (max-width:767px){
+	.uc-tier.is-problem { min-height:0; }
+	.uc-tier.is-outcome p { min-height:0; }
+}
+@media (max-width:575px){ .uc-head { padding:22px 18px 16px; } .uc-tier { padding:14px 18px 16px; } }
 
 /* How It Works — theme-matched step flow: real blob icons (same
    fbox-ico/shape-ico pattern as Features/Use Cases/Technology),
@@ -195,7 +287,7 @@ html { font-size: 15px; }
 /* Fields are white now that the card behind them is gone — on the page's blue
    wash a near-white fill made them read as flat blocks rather than inputs. */
 .contacts-1 .contact-form .form-control,
-.contacts-1 .contact-form .form-select { height: 48px; padding: 0 16px; margin-bottom: 18px;
+.contacts-1 .contact-form .form-select { height: 48px; padding: 0 16px; margin-bottom: 10px;
 	border: 1px solid #dfe6f0; border-radius: 10px; background-color: #fff;
 	font-size: .95rem; color: #2b3542;
 	transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease; }
@@ -211,15 +303,15 @@ html { font-size: 15px; }
 
 /* Field labels — small, quiet, and paired with required / optional markers so
    the asterisk survives once the placeholder is typed over. */
-.contacts-1 .contact-form .form-label { display: block; margin-bottom: 7px;
+.contacts-1 .contact-form .form-label { display: block; margin-bottom: 5px;
 	font-size: .82rem; font-weight: 600; color: #46515f; letter-spacing: .005em; }
 .req { color: var(--theme-color-secondary); font-weight: 700; }
 .opt { font-weight: 500; font-size: .74rem; color: #9aa4b4; text-transform: lowercase; }
 
 /* Group labels sit between field clusters, so they need top space but must not
    push the very first cluster away from the card header. */
-.contacts-1 .contact-form .form-group-label { margin: 20px 0 12px; }
-.contacts-1 .contact-form .col-12:first-child .form-group-label { margin-top: 8px; }
+.contacts-1 .contact-form .form-group-label { margin: 10px 0 8px; }
+.contacts-1 .contact-form .col-12:first-child .form-group-label { margin-top: 4px; }
 
 /* Submit row — the theme's `text-right` is a Bootstrap 4 class that no longer
    exists in BS5, so the button silently fell back to left-aligned. Make it a
@@ -317,3 +409,61 @@ hr.divider { margin-top:64px; }
 /* Request Demo form (contacts.html) — group labels between field clusters */
 .form-group-label { display:block; font-size:.72rem; font-weight:700; letter-spacing:.08em;
 	text-transform:uppercase; color:var(--theme-color); margin:22px 0 10px; }
+
+/* ============================================================
+   Student & Guardian flow — animated phone mockup synced to
+   the three process steps (index.html #guardian-flow).
+   ============================================================ */
+.phone-flow { position: relative; width: 300px; max-width: 100%; margin: 0 auto;
+	border: 12px solid #14223c; border-radius: 46px; background: #14223c;
+	box-shadow: 0 30px 70px rgba(20,45,90,.22); }
+.phone-flow-screens { position: relative; border-radius: 34px; overflow: hidden;
+	aspect-ratio: 1179 / 2556; background: #eaf3fb; }
+.pf-screen { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+	object-position: top center; opacity: 0; transform: scale(1.03);
+	transition: opacity .6s ease, transform .8s ease; will-change: opacity, transform; }
+.pf-screen.is-active { opacity: 1; transform: scale(1); }
+
+/* Process steps dim until active, so the flow reads one step at a time. */
+.ct-01 .process-step { cursor: pointer; opacity: .5;
+	transition: opacity .4s ease; }
+.ct-01 .process-step.is-active { opacity: 1; }
+.ct-01 .process-step .cbox-1-ico { transition: transform .4s ease, box-shadow .4s ease; }
+.ct-01 .process-step.is-active .cbox-1-ico { transform: scale(1.12);
+	box-shadow: 0 8px 22px rgba(245,158,11,.45); }
+/* Connector line fills as the step becomes active. */
+.ct-01 .process-step .cbox-1-line { transition: background-color .5s ease; }
+.ct-01 .process-step.is-active .cbox-1-line,
+.ct-01 .process-step.is-done .cbox-1-line { background-color: var(--theme-color-secondary); }
+
+@media (prefers-reduced-motion: reduce) {
+	.pf-screen { transition: opacity .2s linear; transform: none; }
+	.pf-screen.is-active { transform: none; }
+	.ct-01 .process-step { opacity: 1; }
+}
+
+/* Simulated pointer that taps to select a due, then drags the swipe-to-pay
+   handle — makes the phone flow read as real on-screen interaction. */
+.pf-cursor { position: absolute; left: 50%; top: 50%; width: 30px; height: 30px;
+	margin: -15px 0 0 -15px; z-index: 5; pointer-events: none;
+	border-radius: 50%; background: rgba(20,34,60,.42);
+	box-shadow: 0 3px 10px rgba(20,34,60,.35), inset 0 0 0 2px rgba(255,255,255,.85);
+	opacity: 0; transform: scale(.6);
+	transition: left .75s cubic-bezier(.5,0,.2,1), top .75s cubic-bezier(.5,0,.2,1),
+		opacity .35s ease, transform .35s ease; }
+.pf-cursor.is-visible { opacity: 1; transform: scale(1); }
+/* expanding ring that fires on a tap */
+.pf-cursor-ring { position: absolute; inset: -6px; border-radius: 50%;
+	border: 2px solid rgba(0,153,242,.9); opacity: 0; }
+.pf-cursor.is-tapping .pf-cursor-ring { animation: pfTap .6s ease-out; }
+.pf-cursor.is-tapping { animation: pfPress .6s ease-out; }
+@keyframes pfTap {
+	0%   { opacity: .9; transform: scale(.5); }
+	100% { opacity: 0;  transform: scale(2.4); } }
+@keyframes pfPress {
+	0%,100% { box-shadow: 0 3px 10px rgba(20,34,60,.35), inset 0 0 0 2px rgba(255,255,255,.85); }
+	40%     { box-shadow: 0 2px 6px rgba(20,34,60,.45), inset 0 0 0 2px rgba(255,255,255,.95); transform: scale(.82); } }
+
+@media (prefers-reduced-motion: reduce) {
+	.pf-cursor { display: none; }
+}
