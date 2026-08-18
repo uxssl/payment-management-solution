@@ -592,25 +592,44 @@ hr.divider { margin-top:64px; }
    desktop, which the two tiers above handle. */
 
 /* CUSTOMER VALUE CALLOUT (features.html) ===================================
-   Was a flat inline line ("Customer value: …"). Promoted to a soft-tinted
-   benefit callout — a check-marked payoff box that closes each feature block.
-   Azure tint keeps it on-brand; the label is an uppercase eyebrow. */
-.feature-value { display:flex; align-items:flex-start; gap:18px; margin-top:36px;
-	padding:26px 28px; border-radius:18px;
-	background:linear-gradient(180deg,rgba(0,153,242,.09),rgba(0,153,242,.045));
-	border:1px solid rgba(0,153,242,.18);
-	box-shadow:0 18px 44px -30px rgba(0,153,242,.55); }
-.feature-value-ico { flex:0 0 48px; width:48px; height:48px; border-radius:14px;
+   Closes each of the nine feature blocks with its payoff line. Laid out as a
+   grid so the check mark and the eyebrow label share one row and the payoff
+   sentence spans the card's full width — the previous icon-gutter layout made
+   a 48px azure tile the loudest thing in the box and squeezed the sentence
+   into a narrow measure (three wrapped lines where two will do).
+   `display:contents` on the text wrapper promotes its two children into this
+   grid, so the markup stays untouched across all nine blocks. */
+.feature-value { position:relative; display:grid; grid-template-columns:auto 1fr;
+	align-items:center; column-gap:10px; row-gap:12px;
+	margin-top:38px; padding:24px;
+	border-radius:16px; overflow:hidden;
+	background:linear-gradient(180deg,rgba(0,153,242,.10),rgba(0,153,242,.035));
+	box-shadow:0 12px 30px -22px rgba(3,74,120,.42); }
+
+/* Accent rail — anchors the callout to the brand and gives the block a clear
+   "this is the conclusion" edge without an enclosing outline. */
+.feature-value::before { content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+	 }
+
+/* Pure grouping node — hand its children straight to the grid above. */
+.feature-value-txt { display:contents; }
+
+.feature-value-ico { grid-column:1; grid-row:1;
+	width:26px; height:26px; border-radius:50%;
 	display:flex; align-items:center; justify-content:center;
-	background:var(--theme-color); box-shadow:0 8px 18px -7px rgba(0,153,242,.65); }
-.feature-value-ico [class*="flaticon-"]:before { font-size:20px; color:#fff; margin:0; }
-.feature-value-txt { min-width:0; }
-.feature-value-label { display:block; margin-bottom:6px; font-size:.75rem; font-weight:700;
-	letter-spacing:.12em; text-transform:uppercase; color:#0077bf; }
-.feature-value p { margin:0; font-size:1.1rem; line-height:1.6; color:#333d4e; }
+	background:var(--theme-color); }
+.feature-value-ico [class*="flaticon-"]:before { font-size:11px; color:#fff; margin:0; }
+
+.feature-value-label { grid-column:2; grid-row:1; display:block; margin:0;
+	font-size:.76rem; font-weight:700; letter-spacing:.13em;
+	text-transform:uppercase; color:#04618f; }
+
+.feature-value p { grid-column:1 / -1; grid-row:2; margin:0;
+	font-size:1.08rem; font-weight:500; line-height:1.6; color:#2f3949; }
 
 @media (max-width:575px){
-	.feature-value { padding:20px 20px; gap:14px; margin-top:28px; }
-	.feature-value-ico { flex-basis:42px; width:42px; height:42px; }
+	.feature-value { margin-top:28px; padding:19px 20px 21px 22px; row-gap:9px; }
+	.feature-value-ico { width:23px; height:23px; }
+	.feature-value-ico [class*="flaticon-"]:before { font-size:10px; }
 	.feature-value p { font-size:1.02rem; }
 }
